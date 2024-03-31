@@ -72,4 +72,10 @@
     </MauiXaml>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Views\SplashScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
 </Project>

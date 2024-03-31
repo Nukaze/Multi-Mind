@@ -14,7 +14,7 @@ public partial class SplashScreen : ContentPage
 
     private async void PerformSplashScreen()
     {
-        await Task.Delay(2000);
+        await Task.Delay(5000);
         if (Application.Current is null)
         {
             return;

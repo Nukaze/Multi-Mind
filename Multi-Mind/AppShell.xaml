@@ -8,8 +8,20 @@
     Title="Multi_Mind">
 
     <ShellContent
-        Title="Home"
+        Title="Splash Screen"
+        ContentTemplate="{DataTemplate local:SplashScreen}"
+        Route="Splash Screen" />
+
+    <ShellContent
+        Title="MainPage"
         ContentTemplate="{DataTemplate local:SplashScreen}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="2"
+        ContentTemplate="{DataTemplate local:SplashScreen}"
+        Route="2MainPage" />
+
+
 
 </Shell>

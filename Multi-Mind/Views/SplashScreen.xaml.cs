@@ -16,7 +16,7 @@ public partial class SplashScreen : ContentPage
         await Task.Delay(5000);
 
         await AlertDialog("Welcome", "Welcome to Multi-Mind", "OK");
-        await AlertDialog("Are you want to", "Exit", "OK", "Cancel", ExitMultiMindApp);
+        await AlertDialog("Are you want to", "Exit the app", "Exit", "Cancel", ExitMultiMindApp);
         if (Application.Current is null)
         {
             return;

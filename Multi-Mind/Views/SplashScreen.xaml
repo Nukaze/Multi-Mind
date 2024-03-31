@@ -5,14 +5,8 @@
              Title="Splash Screen">
 
 
-    <StackLayout BackgroundColor="DeepSkyBlue" >
-
-        <Label 
-            BackgroundColor="red"
-            Text="Splash Screen"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
-    </StackLayout>
+    <Grid BackgroundColor="White">
+        <Image Source="logo_main.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+    </Grid>
 
 </ContentPage>

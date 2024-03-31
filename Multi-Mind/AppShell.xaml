@@ -5,7 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Multi_Mind.Views"
     Shell.FlyoutBehavior="Flyout"
-    Title="Multi_Mind">
+    Title="Multi_Mind"
+    BackgroundColor="{DynamicResource Primary}"
+    FlyoutBackgroundColor="{DynamicResource Secondary}"
+    >
 
     <ShellContent
         Title="Splash Screen"

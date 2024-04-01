@@ -16,14 +16,14 @@
         Route="Splash Screen" />
 
     <ShellContent
-        Title="MainPage"
-        ContentTemplate="{DataTemplate local:SplashScreen}"
-        Route="MainPage" />
+        Title="AI Hub"
+        ContentTemplate="{DataTemplate local:HubAI}"
+        Route="AI Hub" />
 
     <ShellContent
         Title="2"
-        ContentTemplate="{DataTemplate local:SplashScreen}"
-        Route="2MainPage" />
+        ContentTemplate="{DataTemplate local:HubAI}"
+        Route="test" />
 
 
 

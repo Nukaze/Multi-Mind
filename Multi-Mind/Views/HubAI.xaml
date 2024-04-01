@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             x:Class="Multi_Mind.Views.HubAI"
+             Title="Hub AI"
+             >
+
+    <ContentPage.Resources>
+        <LinearGradientBrush x:Key="GeminiGradientColor" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#2160CE" Offset="0"/>
+            <GradientStop Color="#5342AE" Offset="0.25"/>
+            <GradientStop Color="#673E9E" Offset="0.50"/>
+            <GradientStop Color="#983D72" Offset="0.75"/>
+            <GradientStop Color="#AA4F52" Offset="1"/>
+
+        </LinearGradientBrush>
+
+
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#282828" Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="AI Hub" Grid.Column="0" TextColor="White" FontSize="24"/>
+            <Image Grid.Column="1" Source="clock.png" />
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#333333">
+            <controls:StackLayout Margin="20">
+                <Button Text="ChatGPT" 
+                        Clicked="ChatGPT_Clicked"
+                        HeightRequest="75" 
+                        Background="#38965E" 
+                        TextColor="White" 
+                        FontSize="38"
+                        Margin="10,20,10,20"
+                        />
+
+                <Button Text="Gemini"
+                        Clicked="Gemini_Clicked"
+                        HeightRequest="75"
+                        Background="{StaticResource GeminiGradientColor}"
+                        TextColor="White"
+                        FontSize="38"
+                        Margin="10,20,10,20"
+                        />
+
+                <Button Text="Claude"
+                        Clicked="Claude_Clicked"
+                        HeightRequest="75"
+                        Background="#B56241"
+                        TextColor="White"
+                        FontSize="38"
+                        Margin="10,20,10,20"
+                        />
+
+            </controls:StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

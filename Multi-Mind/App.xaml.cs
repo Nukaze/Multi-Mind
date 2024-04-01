@@ -7,7 +7,7 @@
             InitializeComponent();
 
             //MainPage = new AppShell();
-            MainPage = new Views.SplashScreen();
+            MainPage = new Views.HubAI();
         }
     }
 }

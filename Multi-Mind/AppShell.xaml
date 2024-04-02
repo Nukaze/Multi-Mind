@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="Multi_Mind.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Multi_Mind.Views"
-    Shell.FlyoutBehavior="Flyout"
-    Title="Multi_Mind"
-    BackgroundColor="{DynamicResource Primary}"
-    FlyoutBackgroundColor="{DynamicResource Secondary}"
+        x:Class="Multi_Mind.AppShell"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:local="clr-namespace:Multi_Mind.Views"
+        Shell.FlyoutBehavior="Flyout"
+        Title="Multi_Mind"
+        BackgroundColor="{DynamicResource Primary}"
+        FlyoutBackgroundColor="{DynamicResource Secondary}"
     >
 
-    <ShellContent
-        Title="Splash Screen"
-        ContentTemplate="{DataTemplate local:SplashScreen}"
-        Route="Splash Screen" />
 
+    <!-- Default Langing Page -->
     <ShellContent
         Title="AI Hub"
         ContentTemplate="{DataTemplate local:HubAI}"
         Route="AI Hub" />
 
+
     <ShellContent
-        Title="2"
-        ContentTemplate="{DataTemplate local:HubAI}"
-        Route="test" />
+        Title="Splash Screen"
+        ContentTemplate="{DataTemplate local:SplashScreen}"
+        Route="Splash Screen" />
 
 
 

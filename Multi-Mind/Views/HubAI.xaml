@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
              x:Class="Multi_Mind.Views.HubAI"
-             Title="Hub AI"
+             Title="AI Hub"
              >
 
     <ContentPage.Resources>
@@ -12,10 +12,18 @@
             <GradientStop Color="#5342AE" Offset="0.25"/>
             <GradientStop Color="#673E9E" Offset="0.50"/>
             <GradientStop Color="#983D72" Offset="0.75"/>
-            <GradientStop Color="#AA4F52" Offset="1"/>
-
+            <GradientStop Color="#AA4F52" Offset="1" />
         </LinearGradientBrush>
 
+        <OnPlatform x:Key="CustomFont" x:TypeArguments="x:String">
+            <On Platform="Android, iOS">
+
+
+            </On>
+            <On Platform="UWP">
+                Fonts/LINESeedSansTH.ttf#LINESeedSansTH
+            </On>
+        </OnPlatform>
 
     </ContentPage.Resources>
 
@@ -28,10 +36,21 @@
         <Grid Grid.Row="0" Background="#282828" Padding="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Text="AI Hub" Grid.Column="0" TextColor="White" FontSize="24"/>
-            <Image Grid.Column="1" Source="clock.png" />
+            <Label Grid.Column="1" Grid.ColumnSpan="2"
+                   Text="AI Hub" 
+                   TextColor="White" 
+                   FontSize="64" 
+                   FontFamily="{StaticResource CustomFont}"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+            <Image Grid.Column="0" Grid.ColumnSpan="0"
+                   Opacity="1"
+                   Source="dotnet_bot"
+                   
+                   />
         </Grid>
 
         <Grid Grid.Row="1" Background="#333333">
@@ -43,15 +62,20 @@
                         TextColor="White" 
                         FontSize="38"
                         Margin="10,20,10,20"
+                        FontFamily="{StaticResource CustomFont}"
+                        ImageSource="ChatGPT_logo.svg"
+                        
                         />
 
-                <Button Text="Gemini"
+                <Button Text="Gemini จีมีไนล์"
                         Clicked="Gemini_Clicked"
                         HeightRequest="75"
                         Background="{StaticResource GeminiGradientColor}"
                         TextColor="White"
                         FontSize="38"
                         Margin="10,20,10,20"
+                        FontFamily="{StaticResource CustomFont}"
+                        ImageSource="Gemini-icon.svg"
                         />
 
                 <Button Text="Claude"
@@ -61,6 +85,8 @@
                         TextColor="White"
                         FontSize="38"
                         Margin="10,20,10,20"
+                        FontFamily="{StaticResource CustomFont}" 
+                        ImageSource="Claude-ai-icon.svg"
                         />
 
             </controls:StackLayout>

@@ -17,8 +17,7 @@
 
         <OnPlatform x:Key="CustomFont" x:TypeArguments="x:String">
             <On Platform="Android, iOS">
-
-
+                Fonts/LINESeedSansTH.ttf#LINESeedSansTH
             </On>
             <On Platform="UWP">
                 Fonts/LINESeedSansTH.ttf#LINESeedSansTH
@@ -26,6 +25,8 @@
         </OnPlatform>
 
     </ContentPage.Resources>
+
+
 
     <Grid>
         <Grid.RowDefinitions>

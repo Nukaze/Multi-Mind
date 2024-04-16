@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DotNetEnv;
+using static Multi_Mind.Services.Utilize;
+
 
 namespace Multi_Mind.Models
 {
@@ -23,18 +26,26 @@ namespace Multi_Mind.Models
             Color.FromArgb("#D09A74")   // Claude
         };
 
-        private List<string> AgentApiKey = new List<string>
+        private List<string> ApiKeyList = new List<string>
         {
             "eiei",  // null
-            "",  // ChatGPT
-            "",  // Gemini
-            ""   // Claude
+            Environment.GetEnvironmentVariable("CHATGPT_API_KEY") ?? "not found",  // ChatGPT
+            Environment.GetEnvironmentVariable("GEMINI_API_KEY") ?? "not found",  // Gemini
+            Environment.GetEnvironmentVariable("CLAUDE_API_KEY") ?? "not found"   // Claude
         };
 
         public string Model { get; private set; }
         public short Id { get; private set; }
         public Color Color => ColorList[Id];
+        public string ApiKey => ApiKeyList[Id];
 
+        static Agent()
+        {
+            var env = DotNetEnv.Env.Load();
+            Console.WriteLine(env);
+
+
+        }
 
         public Agent(Models? model)
         {

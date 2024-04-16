@@ -63,10 +63,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <MauiXaml Update="Views\CharactersMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\HubAI.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

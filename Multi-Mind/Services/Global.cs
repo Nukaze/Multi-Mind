@@ -11,5 +11,7 @@ namespace Multi_Mind.Services
     {
         public static Agent Agent { get; set; } = new Agent(Agent.Models.Null);
 
+        public static DeviceDisplayInfo DeviceDisplayInfo { get; set; } = new DeviceDisplayInfo();
+
     }
 }

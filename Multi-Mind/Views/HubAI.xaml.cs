@@ -1,12 +1,16 @@
+using Multi_Mind.Models;
+using Multi_Mind.Services;
 using static Multi_Mind.Services.Utilize;
 
 namespace Multi_Mind.Views;
 
 public partial class HubAI : ContentPage
 {
+
     public HubAI()
     {
         InitializeComponent();
+        AlertDialog("Welcome", $"Agent Name {Global.Agent.Model}");
     }
 
     private async void ChatGPT_Clicked(object sender, EventArgs e)
@@ -16,7 +20,12 @@ public partial class HubAI : ContentPage
             "Chat with ChatGPT",
             info,
             "Confirm",
-            "Cancel"
+            "Cancel",
+            onAccept: () =>
+            {
+                Global.Agent.SetModel(Agent.Models.ChatGPT);
+                GoToCharactersMenu();
+            }
         );
     }
 
@@ -27,7 +36,12 @@ public partial class HubAI : ContentPage
             "Chat with Gemini",
             info,
             "Confirm",
-            "Cancel"
+            "Cancel",
+            onAccept: () =>
+            {
+                Global.Agent.SetModel(Agent.Models.Gemini);
+                GoToCharactersMenu();
+            }
         );
     }
 
@@ -38,7 +52,17 @@ public partial class HubAI : ContentPage
             "Chat with Claude",
             info,
             "Confirm",
-            "Cancel"
+            "Cancel",
+            onAccept: () =>
+            {
+                Global.Agent.SetModel(Agent.Models.Claude);
+                GoToCharactersMenu();
+            }
         );
+    }
+
+    private async void GoToCharactersMenu()
+    {
+        await Navigation.PushAsync(new CharactersMenu());
     }
 }

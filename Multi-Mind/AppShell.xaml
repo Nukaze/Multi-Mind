@@ -19,9 +19,10 @@
 
 
     <ShellContent
-        Title="Splash Screen"
-        ContentTemplate="{DataTemplate local:SplashScreen}"
-        Route="Splash Screen" />
+        Title="Characters Menu"
+        ContentTemplate="{DataTemplate local:CharactersMenu}"
+        Route="Characters Menu" />
+
 
 
 

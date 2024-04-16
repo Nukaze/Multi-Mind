@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Multi_Mind.Views.CharactersMenu"
+             Title="Characters Menu">
+
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" BackgroundColor="Black" HeightRequest="800">
+        <Label Text="Characters" FontSize="Title" />
+        <Label Text="Al in Claude" />
+        <ScrollView 
+            HeightRequest="500"
+            Margin="20" BackgroundColor="Green"
+            >
+
+            <VerticalStackLayout x:Name="buttonVertStackLayout" Spacing="10" >
+
+                <!-- 
+                    This section is adding the buttons dynamically from the backend
+                -->
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+    </VerticalStackLayout>
+
+</ContentPage>

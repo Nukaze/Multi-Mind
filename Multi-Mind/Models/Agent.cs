@@ -38,11 +38,11 @@ namespace Multi_Mind.Models
 
         public Agent(Models? model)
         {
-            SetAgentModel(model ?? Models.Null);
+            SetModel(model ?? Models.Null);
         }
 
 
-        public void SetAgentModel(Models model)
+        public void SetModel(Models model)
         {
             this.Model = model.ToString();
             this.Id = (short)model;

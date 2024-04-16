@@ -32,7 +32,7 @@ public partial class CharactersMenu : ContentPage
             {
                 Text = character,
                 HeightRequest = 120,
-                CornerRadius = 100,
+                CornerRadius = 300,
                 BackgroundColor = Global.Agent.Color,
                 TextColor = Colors.White,
             };
@@ -46,7 +46,7 @@ public partial class CharactersMenu : ContentPage
         var displayInfo = Global.DeviceDisplayInfo;
         await AlertDialog(
             $"Agent {Global.Agent.Model}",
-            $"Density: {displayInfo.Density}\nWidthDP: {displayInfo.WidthDp}\nHeightDP: {displayInfo.HeightDp}\nOrientation: {displayInfo.Orientation}",
+            $"KEY {Global.Agent.ApiKey}\nDensity: {displayInfo.Density}\nWidthDP: {displayInfo.WidthDp}\nHeightDP: {displayInfo.HeightDp}\nOrientation: {displayInfo.Orientation}",
             "OK"
             );
 

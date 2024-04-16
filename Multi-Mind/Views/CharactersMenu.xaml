@@ -5,14 +5,13 @@
              Title="Characters Menu">
 
 
-    <VerticalStackLayout VerticalOptions="CenterAndExpand" BackgroundColor="Black" HeightRequest="800">
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" BackgroundColor="AliceBlue" HeightRequest="800">
         <Label Text="Characters" FontSize="Title" />
         <Label Text="Al in Claude" />
         <ScrollView 
-            HeightRequest="500"
-            Margin="20" BackgroundColor="Green"
+            HeightRequest="620"
+            Margin="10" BackgroundColor="Green"
             >
-
             <VerticalStackLayout x:Name="buttonVertStackLayout" Spacing="10" >
 
                 <!-- 

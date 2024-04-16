@@ -10,18 +10,6 @@ public partial class CharactersMenu : ContentPage
 {
 
     private Characters characters = new Characters();
-    private DisplayInfo displayInfo = new DisplayInfo();
-
-    internal class DisplayInfo
-    {
-        public double widthPx { get; set; }
-        public double heightPx { get; set; }
-        public double density { get; set; }
-        public double widthDp => widthPx / density;
-        public double heightDp => heightPx / density;
-        public string? orientation { get; set; }
-    };
-
 
     public CharactersMenu()
     {
@@ -31,7 +19,7 @@ public partial class CharactersMenu : ContentPage
         characters.GetDefaultCharacters();
         GenerateAndBindingCharactersButtons();
 
-        GetScreenDimensions();
+        CheckScreenDimensions();
 
 
     }
@@ -44,27 +32,21 @@ public partial class CharactersMenu : ContentPage
             {
                 Text = character,
                 HeightRequest = 120,
-                CornerRadius = 10,
-                BackgroundColor = Colors.White,
-                TextColor = Colors.Black,
+                CornerRadius = 100,
+                BackgroundColor = Global.Agent.Color,
+                TextColor = Colors.White,
             };
 
             buttonVertStackLayout.Children.Add(button);
         }
     }
 
-    private async void GetScreenDimensions()
+    private async void CheckScreenDimensions()
     {
-        var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-
-        displayInfo.widthPx = mainDisplayInfo.Width;
-        displayInfo.heightPx = mainDisplayInfo.Height;
-        displayInfo.density = mainDisplayInfo.Density;
-        displayInfo.orientation = mainDisplayInfo.Orientation.ToString();
-
+        var displayInfo = Global.DeviceDisplayInfo;
         await AlertDialog(
             $"Agent {Global.Agent.Model}",
-            $"Density: {displayInfo.density}\nWidthDP: {displayInfo.widthDp}\nHeightDP: {displayInfo.heightDp}\nOrientation: {displayInfo.orientation}",
+            $"Density: {displayInfo.Density}\nWidthDP: {displayInfo.WidthDp}\nHeightDP: {displayInfo.HeightDp}\nOrientation: {displayInfo.Orientation}",
             "OK"
             );
 

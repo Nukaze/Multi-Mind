@@ -10,7 +10,12 @@ public partial class HubAI : ContentPage
     public HubAI()
     {
         InitializeComponent();
-        AlertDialog("Welcome", $"Agent Name {Global.Agent.Model}");
+        HubAI.WelcomeLanding();
+    }
+
+    private static async void WelcomeLanding()
+    {
+        await AlertDialog("Welcome", $"Agent Name {Global.Agent.Model}\n ENV is production {Global.ENV.IsProduction}");
     }
 
     private async void ChatGPT_Clicked(object sender, EventArgs e)

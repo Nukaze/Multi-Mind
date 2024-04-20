@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+
+## User specific files 2024-04-21
+Multi-Mind/Environment/*
+
+
 # User-specific files
 *.rsuser
 *.suo

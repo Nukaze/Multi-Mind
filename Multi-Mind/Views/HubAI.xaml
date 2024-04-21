@@ -54,41 +54,69 @@
                    />
         </Grid>
 
-        <Grid Grid.Row="1" Background="#333333">
-            <controls:StackLayout Margin="20">
-                <Button Text="ChatGPT" 
+        <Grid Grid.Row="1" Background="#333333" Margin="0">
+            <controls:StackLayout Margin="20" Spacing="30">
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" BackgroundColor="red">
+                    <ImageButton 
+                        Source="chatgpt_icon.png" 
+                        HeightRequest="80" 
+                        HorizontalOptions="CenterAndExpand"
                         Clicked="ChatGPT_Clicked"
-                        HeightRequest="75" 
+                        />
+                    <Button 
+                        Text="ChatGPT" 
+                        Clicked="ChatGPT_Clicked"
+                        HeightRequest="80" 
+                        WidthRequest="250"
                         Background="#38965E" 
                         TextColor="White" 
                         FontSize="38"
                         Margin="10,20,10,20"
                         FontFamily="{StaticResource CustomFont}"
-                        ImageSource="ChatGPT_logo.svg"
-                        
                         />
+                </StackLayout>
 
-                <Button Text="Gemini จีมีไนล์"
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Background="Green">
+
+                    <ImageButton 
+                        Source="gemini_icon.png" 
+                        HeightRequest="80" 
+                        HorizontalOptions="StartAndExpand"
                         Clicked="Gemini_Clicked"
-                        HeightRequest="75"
+                        />
+                    <Button Text="Gemini"
+                        Clicked="Gemini_Clicked"
+                        HeightRequest="80"
+                        WidthRequest="250"
                         Background="{StaticResource GeminiGradientColor}"
                         TextColor="White"
                         FontSize="38"
                         Margin="10,20,10,20"
                         FontFamily="{StaticResource CustomFont}"
-                        ImageSource="Gemini-icon.svg"
+                        
                         />
+                </StackLayout>
 
-                <Button Text="Claude"
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Background="Blue">
+
+                    <ImageButton 
+                        Source="claude_icon.png" 
+                        HeightRequest="80" 
+                        HorizontalOptions="StartAndExpand"
                         Clicked="Claude_Clicked"
-                        HeightRequest="75"
+                        />
+                    <Button Text="Claude"
+                        Clicked="Claude_Clicked"
+                        HeightRequest="80"
+                        WidthRequest="250"
                         Background="#B56241"
                         TextColor="White"
                         FontSize="38"
                         Margin="10,20,10,20"
                         FontFamily="{StaticResource CustomFont}" 
-                        ImageSource="Claude-ai-icon.svg"
                         />
+                </StackLayout>
 
             </controls:StackLayout>
         </Grid>

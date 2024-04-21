@@ -13,18 +13,27 @@ public partial class CharactersMenu : ContentPage
     public CharactersMenu()
     {
         InitializeComponent();
+        CheckScreenDimensions();
 
         characters = new Characters();
         characters.GetDefaultCharacters();
         GenerateAndBindingCharactersButtons();
 
-        CheckScreenDimensions();
 
 
     }
 
+    //This method is called when the page is first displayed and have override to update the characters buttons
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        GenerateAndBindingCharactersButtons();
+    }
+
+
     private void GenerateAndBindingCharactersButtons()
     {
+        buttonVertStackLayout.Children.Clear();
         foreach (string character in characters.charactersList)
         {
             Button button = new Button
@@ -34,6 +43,8 @@ public partial class CharactersMenu : ContentPage
                 CornerRadius = 300,
                 BackgroundColor = Global.Agent.Color,
                 TextColor = Colors.White,
+                FontSize = 32,
+                FontAttributes = FontAttributes.Bold,
             };
 
             buttonVertStackLayout.Children.Add(button);

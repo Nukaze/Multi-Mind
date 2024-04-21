@@ -14,6 +14,8 @@ namespace Multi_Mind.Models
             Claude
         }
 
+        public static readonly string[] ModelsLabel = new string[] { "Null", "ChatGPT", "Gemini", "Claude" };
+
         private List<Color> ColorList = new List<Color> {
             Color.FromArgb("#2b2b2b"),  // null
             Color.FromArgb("#75A99C"),  // ChatGPT
@@ -29,13 +31,7 @@ namespace Multi_Mind.Models
         public string ApiKey => AgentApiKeyList[Id];
 
 
-        static Agent()
-        {
-            var env = DotNetEnv.Env.Load();
-            Console.WriteLine(env);
-
-
-        }
+        static Agent() { }
 
         public Agent(Models? model, string[] agentApiKeyList)
         {
@@ -55,5 +51,13 @@ namespace Multi_Mind.Models
             this.AgentApiKeyList = agentApiKeyList;
         }
 
+        public string GetModelLabel(short id)
+        {
+            if (id < 0 || id >= ModelsLabel.Length)
+            {
+                return ModelsLabel[0];
+            }
+            return ModelsLabel[id];
+        }
     }
 }

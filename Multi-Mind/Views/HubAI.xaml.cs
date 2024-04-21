@@ -68,6 +68,6 @@ public partial class HubAI : ContentPage
 
     private async void GoToCharactersMenu()
     {
-        await Navigation.PushAsync(new CharactersMenu());
+        await Shell.Current.GoToAsync("//Characters");
     }
 }

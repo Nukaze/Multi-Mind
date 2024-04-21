@@ -57,7 +57,7 @@
         <Grid Grid.Row="1" Background="#333333" Margin="0">
             <controls:StackLayout Margin="20" Spacing="30">
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" BackgroundColor="red">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                     <ImageButton 
                         Source="chatgpt_icon.png" 
                         HeightRequest="80" 
@@ -77,7 +77,7 @@
                         />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Background="Green">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 
                     <ImageButton 
                         Source="gemini_icon.png" 
@@ -98,7 +98,7 @@
                         />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Background="Blue">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 
                     <ImageButton 
                         Source="claude_icon.png" 

@@ -27,7 +27,10 @@ public partial class CharactersMenu : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        string agentModel = Global.Agent.GetModelLabel(Global.Agent.Id);
+        TitleLabel.Text = $"Agent {agentModel}";
         GenerateAndBindingCharactersButtons();
+
     }
 
 
@@ -79,6 +82,5 @@ public partial class CharactersMenu : ContentPage
         await Shell.Current.GoToAsync("//HubAI");
         //await Shell.Current.GoToAsync($"//Chat?character={character}");
     }
-
 
 }

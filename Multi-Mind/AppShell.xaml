@@ -5,24 +5,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:local="clr-namespace:Multi_Mind.Views"
         Title="Multi_Mind"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.BackgroundColor="{DynamicResource Primary}"
+        Shell.TitleColor="{DynamicResource Text}"
+        Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="True"
         Shell.TabBarDisabledColor="Grey"
         Shell.TabBarBackgroundColor="{DynamicResource Primary}"
         Shell.TabBarForegroundColor="{DynamicResource Contrast}"
-        Shell.TabBarTitleColor="{DynamicResource Text}"
+        Shell.TabBarTitleColor="{DynamicResource Contrast}"
         Shell.TabBarUnselectedColor="{DynamicResource Text}"
     >
 
-    <TabBar>
+
+    <!-- Using Shell.Current.GoToAsync("\\{Route of Target}"); -->
+    <!-- Using Shell.Current.GoToAsync("\\AI Hub"); -->
+    <TabBar >
 
 
         <!-- Default Langing Page -->
         <ShellContent
-            Title="AI Hub"
-            Route="AI Hub" 
             Icon="brain.png"
+            Title="AI Hub"
+            Route="HubAI"
             ContentTemplate="{DataTemplate local:HubAI}"
             />
+        <!-- Using Shell.Current.GoToAsync("\\HubAI"); -->
 
 
         <ShellContent 
@@ -30,6 +38,7 @@
             Route="Chat"
             Icon="speech_bubble.png"
             />
+        <!-- Using Shell.Current.GoToAsync("\\Chat"); -->
 
 
         <ShellContent
@@ -38,6 +47,7 @@
             Icon="characters_picker.png"
             ContentTemplate="{DataTemplate local:CharactersMenu}"
             />
+        <!-- Using Shell.Current.GoToAsync("\\Characters"); -->
 
 
         <ShellContent
@@ -45,7 +55,7 @@
             Route="Profile"
             Icon="profile.png"
             />
-
+        <!-- Using Shell.Current.GoToAsync("\\Profile"); -->
 
     </TabBar>
 

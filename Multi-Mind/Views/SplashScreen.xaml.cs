@@ -21,6 +21,7 @@ public partial class SplashScreen : ContentPage
         {
             return;
         }
+        // Start App here
         Application.Current.MainPage = new AppShell();
     }
 

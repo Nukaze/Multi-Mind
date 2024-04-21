@@ -7,10 +7,16 @@
 
     <VerticalStackLayout VerticalOptions="CenterAndExpand" BackgroundColor="AliceBlue" HeightRequest="800">
         <Label Text="Characters" FontSize="Title" />
-        <Label Text="Al in Claude" />
+        <Label 
+            x:Name="TitleLabel"
+            Text="" FontSize="48"
+            TextColor="Black"
+            FontAttributes="Bold"
+           />
         <ScrollView 
-            HeightRequest="620"
-            Margin="10" BackgroundColor="Green"
+            HeightRequest="670"
+            Margin="20,0,20,0" Padding="20, 20, 20, 20"
+            BackgroundColor="Grey"
             >
             <VerticalStackLayout x:Name="buttonVertStackLayout" Spacing="10" >
 

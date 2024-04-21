@@ -15,7 +15,7 @@ public partial class SplashScreen : ContentPage
     {
         await Task.Delay(5000);
 
-        await AlertDialog("Welcome", "Welcome to Multi-Mind", "OK");
+        //await AlertDialog("Welcome", "Welcome to Multi-Mind", "OK");
 
         if (Application.Current is null)
         {

@@ -32,10 +32,11 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <!-- Title header -->
                 <Label Grid.Column="1" Grid.ColumnSpan="2"
-                   Text="AI Hub" 
-                   TextColor="White" 
-                   FontSize="64" 
+                   Text="AI Hub งับ" 
+                   TextColor="{DynamicResource White}" 
+                   FontSize="48" 
                    HorizontalOptions="CenterAndExpand"
                    />
                 <Image Grid.Column="0" Grid.ColumnSpan="0"

@@ -31,11 +31,24 @@ public partial class CharactersMenu : ContentPage
     }
 
 
+    private async void CheckScreenDimensions()
+    {
+        var displayInfo = Global.DeviceDisplayInfo;
+        await AlertDialog(
+            $"Agent {Global.Agent.Model}",
+            $"KEY {Global.Agent.ApiKey}\nDensity: {displayInfo.Density}\nWidthDP: {displayInfo.WidthDp}\nHeightDP: {displayInfo.HeightDp}\nOrientation: {displayInfo.Orientation}",
+            "OK"
+            );
+
+    }
+
     private void GenerateAndBindingCharactersButtons()
     {
         buttonVertStackLayout.Children.Clear();
-        foreach (string character in characters.charactersList)
+        for (short i = 0; i < characters.charactersList.Count; i++)
         {
+            short characterId = i;
+            string character = characters.charactersList[i];
             Button button = new Button
             {
                 Text = character,
@@ -47,19 +60,24 @@ public partial class CharactersMenu : ContentPage
                 FontAttributes = FontAttributes.Bold,
             };
 
+            button.Clicked += async (sender, e) => await HandleCharacterButtonSelection(characterId);
+
             buttonVertStackLayout.Children.Add(button);
         }
     }
 
-    private async void CheckScreenDimensions()
+    private async Task HandleCharacterButtonSelection(short characterId)
     {
-        var displayInfo = Global.DeviceDisplayInfo;
+        string character = characters.charactersList[characterId];
         await AlertDialog(
-            $"Agent {Global.Agent.Model}",
-            $"KEY {Global.Agent.ApiKey}\nDensity: {displayInfo.Density}\nWidthDP: {displayInfo.WidthDp}\nHeightDP: {displayInfo.HeightDp}\nOrientation: {displayInfo.Orientation}",
-            "OK"
-            );
+                       $"\"{character}\" Selected",
+                        characters.dialogsList[characterId],
+                        "OK"
+                        );
 
+
+        await Shell.Current.GoToAsync("//HubAI");
+        //await Shell.Current.GoToAsync($"//Chat?character={character}");
     }
 
 

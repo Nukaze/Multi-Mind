@@ -4,26 +4,50 @@
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:local="clr-namespace:Multi_Mind.Views"
-        Shell.FlyoutBehavior="Flyout"
         Title="Multi_Mind"
-        BackgroundColor="{DynamicResource Primary}"
-        FlyoutBackgroundColor="{DynamicResource Secondary}"
+        Shell.TabBarIsVisible="True"
+        Shell.TabBarDisabledColor="Grey"
+        Shell.TabBarBackgroundColor="{DynamicResource Primary}"
+        Shell.TabBarForegroundColor="{DynamicResource Contrast}"
+        Shell.TabBarTitleColor="{DynamicResource Text}"
+        Shell.TabBarUnselectedColor="{DynamicResource Text}"
     >
 
-
-    <!-- Default Langing Page -->
-    <ShellContent
-        Title="AI Hub"
-        ContentTemplate="{DataTemplate local:HubAI}"
-        Route="AI Hub" />
+    <TabBar>
 
 
-    <ShellContent
-        Title="Characters Menu"
-        ContentTemplate="{DataTemplate local:CharactersMenu}"
-        Route="Characters Menu" />
+        <!-- Default Langing Page -->
+        <ShellContent
+            Title="AI Hub"
+            Route="AI Hub" 
+            Icon="brain.png"
+            ContentTemplate="{DataTemplate local:HubAI}"
+            />
 
 
+        <ShellContent 
+            Title="Chat"
+            Route="Chat"
+            Icon="speech_bubble.png"
+            />
+
+
+        <ShellContent
+            Title="Characters"
+            Route="Characters"
+            Icon="characters_picker.png"
+            ContentTemplate="{DataTemplate local:CharactersMenu}"
+            />
+
+
+        <ShellContent
+            Title="Profile"
+            Route="Profile"
+            Icon="profile.png"
+            />
+
+
+    </TabBar>
 
 
 </Shell>

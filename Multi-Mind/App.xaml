@@ -9,6 +9,12 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Set Default Font for all component in App -->
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="LINESeedSansTH" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

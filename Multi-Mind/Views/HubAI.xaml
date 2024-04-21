@@ -27,44 +27,45 @@
     </ContentPage.Resources>
 
 
+    <ContentPage.Content>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="#282828" Padding="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="1" Grid.ColumnSpan="2"
+            <Grid Grid.Row="0" Background="#282828" Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Grid.ColumnSpan="2"
                    Text="AI Hub" 
                    TextColor="White" 
                    FontSize="64" 
                    FontFamily="{StaticResource CustomFont}"
                    HorizontalOptions="CenterAndExpand"
                    />
-            <Image Grid.Column="0" Grid.ColumnSpan="0"
+                <Image Grid.Column="0" Grid.ColumnSpan="0"
                    Opacity="1"
                    Source="dotnet_bot"
                    
                    />
-        </Grid>
+            </Grid>
 
-        <Grid Grid.Row="1" Background="#333333" Margin="0">
-            <controls:StackLayout Margin="20" Spacing="30">
+            <Grid Grid.Row="1" Background="#333333" Margin="0">
+                <controls:StackLayout Margin="20" Spacing="30">
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                    <ImageButton 
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                        <ImageButton 
                         Source="chatgpt_icon.png" 
                         HeightRequest="80" 
                         HorizontalOptions="CenterAndExpand"
                         Clicked="ChatGPT_Clicked"
                         />
-                    <Button 
+                        <Button 
                         Text="ChatGPT" 
                         Clicked="ChatGPT_Clicked"
                         HeightRequest="80" 
@@ -75,17 +76,17 @@
                         Margin="10,20,10,20"
                         FontFamily="{StaticResource CustomFont}"
                         />
-                </StackLayout>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 
-                    <ImageButton 
+                        <ImageButton 
                         Source="gemini_icon.png" 
                         HeightRequest="80" 
                         HorizontalOptions="StartAndExpand"
                         Clicked="Gemini_Clicked"
                         />
-                    <Button Text="Gemini"
+                        <Button Text="Gemini"
                         Clicked="Gemini_Clicked"
                         HeightRequest="80"
                         WidthRequest="250"
@@ -96,17 +97,17 @@
                         FontFamily="{StaticResource CustomFont}"
                         
                         />
-                </StackLayout>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 
-                    <ImageButton 
+                        <ImageButton 
                         Source="claude_icon.png" 
                         HeightRequest="80" 
                         HorizontalOptions="StartAndExpand"
                         Clicked="Claude_Clicked"
                         />
-                    <Button Text="Claude"
+                        <Button Text="Claude"
                         Clicked="Claude_Clicked"
                         HeightRequest="80"
                         WidthRequest="250"
@@ -116,9 +117,11 @@
                         Margin="10,20,10,20"
                         FontFamily="{StaticResource CustomFont}" 
                         />
-                </StackLayout>
+                    </StackLayout>
 
-            </controls:StackLayout>
+                </controls:StackLayout>
+            </Grid>
         </Grid>
-    </Grid>
+    </ContentPage.Content>
+
 </ContentPage>

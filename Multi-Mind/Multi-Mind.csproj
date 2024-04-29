@@ -68,6 +68,9 @@
     <MauiXaml Update="Views\CharactersMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+    <MauiXaml Update="Views\ChatPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\HubAI.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

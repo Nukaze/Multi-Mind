@@ -37,6 +37,7 @@
             Title="Chat"
             Route="Chat"
             Icon="speech_bubble.png"
+            ContentTemplate="{DataTemplate local:ChatPage}"
             />
         <!-- Using Shell.Current.GoToAsync("\\Chat"); -->
 

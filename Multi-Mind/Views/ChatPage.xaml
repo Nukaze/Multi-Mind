@@ -29,7 +29,7 @@
         </ScrollView>
 
         <!-- Entry for typing message -->
-        <StackLayout Padding="10" Orientation="Horizontal" Grid.Row="2" BackgroundColor="red"
+        <StackLayout Padding="10" Orientation="Horizontal" Grid.Row="2" BackgroundColor="AliceBlue"
                      HorizontalOptions="FillAndExpand" VerticalOptions="End"
                      HeightRequest="100"
                      >
@@ -37,9 +37,10 @@
                    HorizontalOptions="FillAndExpand"
                    FontSize="16"
                    />
-            <ImageButton Clicked="Send_Button_Clicked" Source="images/"
-                         BackgroundColor="Black"
-                    WidthRequest="100" HeightRequest="60" />
+            <ImageButton x:Name="sendButton"
+                         Clicked="Send_Button_Clicked" Source="images/send"
+                         Padding="100" BackgroundColor="red"
+                         WidthRequest="80" HeightRequest="80" />
 
 
         </StackLayout>

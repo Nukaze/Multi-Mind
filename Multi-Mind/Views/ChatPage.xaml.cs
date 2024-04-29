@@ -29,8 +29,13 @@ public partial class ChatPage : ContentPage
         agentLabel.BackgroundColor = Global.Agent.Color;
         agentThemeColor = Global.Agent.Color;
         userThemeColor = Global.Agent.Color;        // test color
+
+        sendButton.Padding = new Thickness(100);
+        sendButton.Source = "images/send.png";
+
     }
 
+    [Obsolete]
     private void Send_Button_Clicked(object sender, EventArgs e)
     {
 		if (isSending)
@@ -46,12 +51,26 @@ public partial class ChatPage : ContentPage
 		}
 
 		isSending = true;
+        MessageEntry.IsEnabled = false;
+        sendButton.IsEnabled = false;
+        sendButton.Source = "images/hourglass.png";
+        sendButton.Padding = new Thickness(150);
 
         string username = "User";
 
 		AddMessageToChat(username, message);
 
-        isSending = false;
+        Device.BeginInvokeOnMainThread(async () =>
+        {
+            int randomMsDelay = (int)(new Random().NextDouble() * 2000);
+            await Task.Delay(randomMsDelay);
+            MessageEntry.Text = string.Empty;
+            isSending = false;
+            MessageEntry.IsEnabled = true;
+            sendButton.IsEnabled = true;
+            sendButton.Source = "images/send.png";
+            sendButton.Padding = new Thickness(100);
+        });
 
     }
 

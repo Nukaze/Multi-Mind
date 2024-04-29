@@ -35,11 +35,15 @@
                      >
             <Entry x:Name="MessageEntry" Placeholder="Type a message..." 
                    HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   HeightRequest="50"
                    FontSize="16"
                    />
             <ImageButton x:Name="sendButton"
                          Clicked="Send_Button_Clicked" Source="images/send"
-                         Padding="100" BackgroundColor="red"
+                         Padding="100"
                          WidthRequest="80" HeightRequest="80" />
 
 

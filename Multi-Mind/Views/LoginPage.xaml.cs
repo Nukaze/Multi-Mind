@@ -26,7 +26,12 @@ public partial class LoginPage : ContentPage
 
     private async void Login_Button_Clicked(object sender, EventArgs e)
     {
+        await LoadingDialog(true, LoginProcess());
 
+    }
+
+    private async Task LoginProcess()
+    {
         string email = EmailEntry.Text;
         string password = PasswordEntry.Text;
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))

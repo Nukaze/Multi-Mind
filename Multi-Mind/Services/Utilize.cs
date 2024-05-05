@@ -40,51 +40,72 @@ namespace Multi_Mind.Services
 
         public static async Task LoadingDialog(bool active, Task? isTaskFinished = null, Color? circularColor = null, string bgColor = "#80333333", double circularSize = 100)
         {
-            if (Application.Current is null || Application.Current.MainPage is null)
+            try
             {
-                return;
-            }
-
-            circularColor ??= Colors.Cyan;
-
-            // Check if the loading dialog is being activated or deactivated
-            if (active)
-            {
-                // Create a new ContentPage to host the loading indicator
-                ContentPage loadingPage = new ContentPage
+                if (Application.Current is null || Application.Current.MainPage is null)
                 {
-                    BackgroundColor = Color.FromArgb(bgColor),
-                    Content = new Grid {
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.Center,
-                        Children = { new ActivityIndicator {
-                                        IsRunning = true,
-                                        Color = circularColor,
-                                        VerticalOptions = LayoutOptions.Center,
-                                        HorizontalOptions = LayoutOptions.Center,
-                                        WidthRequest = circularSize,
-                                        HeightRequest = circularSize
-                                    }
-                        }
-                    }
-                };
-
-                // Present the loading page as a modal dialog
-                await Application.Current.MainPage.Navigation.PushModalAsync(loadingPage);
-
-                if (isTaskFinished is not null)
-                {
-                    await isTaskFinished;
+                    return;
                 }
 
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                circularColor ??= Colors.Cyan;
+
+                // Check if the loading dialog is being activated or deactivated
+                if (active)
+                {
+                    // Create a new ContentPage to host the loading indicator
+                    ContentPage loadingPage = new ContentPage
+                    {
+                        BackgroundColor = Color.FromArgb(bgColor),
+                        Content = new Grid
+                        {
+                            VerticalOptions = LayoutOptions.Center,
+                            HorizontalOptions = LayoutOptions.Center,
+                            Children = { new ActivityIndicator
+                        {
+                            IsRunning = true,
+                            Color = circularColor,
+                            VerticalOptions = LayoutOptions.Center,
+                            HorizontalOptions = LayoutOptions.Center,
+                            WidthRequest = circularSize,
+                            HeightRequest = circularSize
+                        }
+                    }
+                        }
+                    };
+
+                    // Present the loading page as a modal dialog
+                    await Application.Current.MainPage.Navigation.PushModalAsync(loadingPage);
+
+                    // Wait for the task to finish before dismissing the loading page
+                    if (isTaskFinished is not null)
+                    {
+                        await isTaskFinished;
+                    }
+
+
+                    await Task.Delay(1500);
+                    // Dismiss the loading page
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+                else
+                {
+                    // Dismiss the loading page
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Dismiss the loading page
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                // Handle the error, for example, show an error message
+                await HandleError(ex);
             }
         }
+
+        private static async Task HandleError(Exception ex)
+        {
+            // Handle the error, for example, show an error message
+            await AlertDialogCustom("Error", ex.Message);
+        }
+
 
 
         public static bool IsUsernameValid(string u)

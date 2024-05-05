@@ -11,9 +11,9 @@
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource Primary}">
 
         <!-- Background Frame -->
-        <StackLayout VerticalOptions="StartAndExpand">
+        <StackLayout VerticalOptions="CenterAndExpand">
             
-            <Image Source="brand1" HeightRequest="200" Margin="0, 150, 0, 20" Aspect="AspectFill"/>
+            <Image Source="brand1" HeightRequest="200" Margin="0, 0, 0, 20" Aspect="AspectFill"/>
 
             <!--  Hexadecimal 0-9 and A-F, with 00 (fully transparent) to FF (fully opaque) -->
             <!-- "#80[RGB hex code 6 digits] is a 50% of Opacity of that color " -->

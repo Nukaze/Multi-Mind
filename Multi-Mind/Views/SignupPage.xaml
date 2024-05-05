@@ -4,14 +4,13 @@
             x:Class="Multi_Mind.Views.SignupPage"
             Title="Sign Up">
 
-    <ContentPage.ToolbarItems>
-        <!-- Add any toolbar items here if needed -->
-    </ContentPage.ToolbarItems>
-
-    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource Primary}">
-
-        <!-- Background Frame -->
-        <StackLayout VerticalOptions="CenterAndExpand">
+        
+    
+    <StackLayout x:Name="MainStackLayout" IsVisible="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                 BackgroundColor="{DynamicResource Primary}">
+        
+        <!-- Register Form Frame -->
+        <StackLayout x:Name="RegisterStackLayout" IsVisible="True" VerticalOptions="CenterAndExpand">
 
             <Image Source="brand1" HeightRequest="200" Margin="0, 0, 0, 20" Aspect="AspectFill"/>
 
@@ -77,4 +76,5 @@
 
     </StackLayout>
 
+    
 </ContentPage>

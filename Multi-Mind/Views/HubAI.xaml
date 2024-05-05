@@ -33,16 +33,15 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Title header -->
-                <Label Grid.Column="1" Grid.ColumnSpan="2"
-                   Text="AI Hub งับ" 
+                <Label Grid.Column="0" Grid.ColumnSpan="2"
+                   Text="AI Hub" 
                    TextColor="{DynamicResource White}" 
                    FontSize="48" 
                    HorizontalOptions="CenterAndExpand"
                    />
-                <Image Grid.Column="0" Grid.ColumnSpan="0"
+                <Image Grid.Column="2" Grid.ColumnSpan="0"
                    Opacity="1"
                    Source="dotnet_bot"
-                   
                    />
             </Grid>
 
@@ -61,9 +60,10 @@
                         Clicked="ChatGPT_Clicked"
                         HeightRequest="80" 
                         WidthRequest="250"
-                        Background="#38965E" 
+                        Background="#38965E"
                         TextColor="White" 
-                        FontSize="38"
+                        FontSize="32"
+                        FontAttributes="Bold"
                         Margin="10,20,10,20"
                         />
                     </StackLayout>
@@ -80,9 +80,10 @@
                         Clicked="Gemini_Clicked"
                         HeightRequest="80"
                         WidthRequest="250"
-                        Background="{StaticResource GeminiGradientColor}"
+                        Background="{DynamicResource GeminiGradientColor}"
                         TextColor="White"
-                        FontSize="38"
+                        FontSize="32"
+                        FontAttributes="Bold"
                         Margin="10,20,10,20"
                         
                         />
@@ -102,7 +103,8 @@
                         WidthRequest="250"
                         Background="#B56241"
                         TextColor="White"
-                        FontSize="38"
+                        FontSize="32"
+                        FontAttributes="Bold"
                         Margin="10,20,10,20"
                         />
                     </StackLayout>

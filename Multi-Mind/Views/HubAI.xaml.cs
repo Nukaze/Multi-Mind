@@ -15,13 +15,13 @@ public partial class HubAI : ContentPage
 
     private static async void WelcomeLanding()
     {
-        await AlertDialog("Welcome", $"Agent Name {Global.Agent.Model}\n ENV is production {Global.ENV.IsProduction}");
+        await AlertDialogCustom("Welcome", $"Agent Name {Global.Agent.Model}\n ENV is production {Global.ENV.IsProduction}");
     }
 
     private async void ChatGPT_Clicked(object sender, EventArgs e)
     {
         string info = "ChatGPT is a large language model trained on a diverse range of internet text. It can generate human-like responses to given text inputs. ChatGPT is a product of OpenAI.";
-        await AlertDialog(
+        await AlertDialogCustom(
             "Chat with ChatGPT",
             info,
             "Confirm",
@@ -37,7 +37,7 @@ public partial class HubAI : ContentPage
     private async void Gemini_Clicked(object sender, EventArgs e)
     {
         string info = "Gemini is a powerful language model from Google AI. It can process different types of information and comes in different sizes for various tasks. Gemini is still under development and not widely available yet.";
-        await AlertDialog(
+        await AlertDialogCustom(
             "Chat with Gemini",
             info,
             "Confirm",
@@ -53,7 +53,7 @@ public partial class HubAI : ContentPage
     private async void Claude_Clicked(object sender, EventArgs e)
     {
         string info = "Claude is an AI chatbot developed by Anthropic. It focuses on being helpful, harmless, and honest in its responses.";
-        await AlertDialog(
+        await AlertDialogCustom(
             "Chat with Claude",
             info,
             "Confirm",

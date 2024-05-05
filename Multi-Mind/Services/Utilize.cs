@@ -8,7 +8,7 @@ namespace Multi_Mind.Services
 {
     public class Utilize
     {
-        public static async Task AlertDialog(
+        public static async Task AlertDialogCustom(
             string title, string message,
             string? acceptText = null, string? cancelText = null,
             Delegate? onAccept = null

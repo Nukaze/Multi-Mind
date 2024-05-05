@@ -37,7 +37,7 @@ public partial class CharactersMenu : ContentPage
     private async void CheckScreenDimensions()
     {
         var displayInfo = Global.DeviceDisplayInfo;
-        await AlertDialog(
+        await AlertDialogCustom(
             $"Agent {Global.Agent.Model}",
             $"KEY {Global.Agent.ApiKey}\nDensity: {displayInfo.Density}\nWidthDP: {displayInfo.WidthDp}\nHeightDP: {displayInfo.HeightDp}\nOrientation: {displayInfo.Orientation}",
             "OK"
@@ -72,7 +72,7 @@ public partial class CharactersMenu : ContentPage
     private async Task HandleCharacterButtonSelection(short characterId)
     {
         string character = characters.charactersList[characterId];
-        await AlertDialog(
+        await AlertDialogCustom(
                        $"\"{character}\" Selected",
                         characters.dialogsList[characterId],
                         "OK"

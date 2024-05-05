@@ -18,7 +18,7 @@ public partial class ChatPage : ContentPage
     public ChatPage()
 	{
 		InitializeComponent();
-		AlertDialog("Welcome to Multi-Mind!","Please enjoy your chatting!");
+		AlertDialogCustom("Welcome to Multi-Mind!","Please enjoy your chatting!");
 	}
 
     

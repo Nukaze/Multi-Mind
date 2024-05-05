@@ -21,9 +21,8 @@
     <!-- Using Shell.Current.GoToAsync("\\{Route of Target}"); -->
     <!-- Using Shell.Current.GoToAsync("\\AI Hub"); -->
     <TabBar >
-
-
-        <!-- Default Langing Page -->
+        
+        <!-- First ShellContent is going to be a Default Landing Page -->
         <ShellContent
             Icon="brain.png"
             Title="AI Hub"

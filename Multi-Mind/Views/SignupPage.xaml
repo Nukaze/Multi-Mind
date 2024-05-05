@@ -1,12 +1,80 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Multi_Mind.Views.SignupPage"
-             Title="SignupPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Multi_Mind.Views.SignupPage"
+            Title="Sign Up">
+
+    <ContentPage.ToolbarItems>
+        <!-- Add any toolbar items here if needed -->
+    </ContentPage.ToolbarItems>
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource Primary}">
+
+        <!-- Background Frame -->
+        <StackLayout VerticalOptions="CenterAndExpand">
+
+            <Image Source="brand1" HeightRequest="200" Margin="0, 0, 0, 20" Aspect="AspectFill"/>
+
+            <Frame BackgroundColor="#80EEEEEE" CornerRadius="20" Padding="20" Margin="20, 0, 20, 0" VerticalOptions="CenterAndExpand">
+
+                <!-- Form StackLayout -->
+                <StackLayout Padding="20" Spacing="15">
+
+                    <Entry x:Name="UsernameEntry" Placeholder="Username" PlaceholderColor="Black" FontAttributes="Bold" />
+
+                    <Entry x:Name="EmailEntry" Placeholder="Email" PlaceholderColor="Black" FontAttributes="Bold" />
+
+                    <HorizontalStackLayout HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="PasswordEntry" Placeholder="Password" PlaceholderColor="Black" IsPassword="True"
+                               WidthRequest="240" FontAttributes="Bold"
+                               />
+
+                        <ImageButton x:Name="PasswordIcon" WidthRequest="30" HeightRequest="30" 
+                                    Clicked="PasswordIcon_Clicked"
+                                    />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" PlaceholderColor="Black" IsPassword="True"
+                               WidthRequest="240" FontAttributes="Bold"
+                               />
+
+                        <ImageButton x:Name="ConfirmPasswordIcon" WidthRequest="30" HeightRequest="30" 
+                                     Clicked="ConfirmPasswordIcon_Clicked"
+                                     />
+                    </HorizontalStackLayout>
+
+                    <Button Text="Sign Up" 
+                            x:Name="SignUpButton"
+                            HeightRequest="60"
+                            CornerRadius="10"
+                            Clicked="SignUpButton_Clicked" 
+                            BackgroundColor="{DynamicResource Contrast}" 
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="18" />
+
+                    <!-- Container for Sign Up Label -->
+                    <HorizontalStackLayout Spacing="5">
+                        <Label Text="Already have an account?" TextColor="Black" />
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Login" TextDecorations="Underline" FontAttributes="Bold" TextColor="Blue">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="LoginLabel_Clicked" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                </StackLayout>
+
+            </Frame>
+        </StackLayout>
+
+    </StackLayout>
+
 </ContentPage>

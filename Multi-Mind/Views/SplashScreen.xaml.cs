@@ -21,8 +21,13 @@ public partial class SplashScreen : ContentPage
         {
             return;
         }
-        // Start App here
-        Application.Current.MainPage = new AppShell();
+
+        // override login page but not navigate with appshell
+        Application.Current.MainPage = new LoginPage();
+
+
+        // Start AppShell here if login is successfully 
+        //Application.Current.MainPage = new AppShell();
     }
 
     void ExitMultiMindApp()

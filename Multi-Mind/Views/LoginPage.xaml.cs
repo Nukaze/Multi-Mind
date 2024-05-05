@@ -55,7 +55,13 @@ public partial class LoginPage : ContentPage
 
     private async void Register_Button_Clicked(object sender, TappedEventArgs e)
     {
-        await AlertDialogCustom("Register", "Register is not available now!");
+        if (App.Current is null)
+        {
+            await AlertDialogCustom("Error", "App.Current is null");
+            return;
+        }
+
+        App.Current.MainPage = new SignupPage();
         return;
     }
 

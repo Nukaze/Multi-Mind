@@ -26,7 +26,6 @@ public partial class SignupPage : ContentPage
     {
         for (int i = 0; i < 5; i++)
         {
-            await AlertDialogCustom("Loading", "Please wait " + i);
             await Task.Delay(1000);
         }
     }

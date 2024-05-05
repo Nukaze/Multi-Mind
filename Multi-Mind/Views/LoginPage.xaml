@@ -21,25 +21,50 @@
                 
                 <!-- Form StackLayout -->
                     <StackLayout Padding="20" Spacing="15">
+
+                    <Entry x:Name="EmailEntry" Placeholder="Email" PlaceholderColor="Black" FontAttributes="Bold"
+                           />
+
+                    <HorizontalStackLayout HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="PasswordEntry" Placeholder="Password" PlaceholderColor="Black" IsPassword="True"
+                               WidthRequest="240" FontAttributes="Bold"
+                               />
                         
-                        <Entry x:Name="EmailEntry" Placeholder="Email" PlaceholderColor="Black"/>
-                    <Entry x:Name="PasswordEntry" Placeholder="Password" PlaceholderColor="Black" IsPassword="True"/>
-                        
-                        <Button Text="Login" 
-                                x:Name="LoginButton"
-                                Clicked="Login_Button_Clicked" 
-                                BackgroundColor="{DynamicResource Contrast}" 
-                                CornerRadius="100"
-                                />
+                        <ImageButton x:Name="PasswordEyeIcon" WidthRequest="30" HeightRequest="30" 
+                                     Clicked="PasswordEyeIcon_Clicked"
+                                     />
+                    </HorizontalStackLayout>
+
+
+                    <Button Text="Login" 
+                            x:Name="LoginButton"
+                            HeightRequest="60"
+                            CornerRadius="10"
+                            Clicked="Login_Button_Clicked" 
+                            BackgroundColor="{DynamicResource Primary}" 
+                            TextColor="{DynamicResource Text}"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                    />
 
                     <!-- Container for Sign Up Label -->
-                    <Frame BackgroundColor="Transparent" BorderColor="LawnGreen" CornerRadius="100">
-                        <Label Text="Don't have an account? Sign Up" TextColor="LawnGreen" HorizontalOptions="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="SignUpLabel_Tapped" />
-                            </Label.GestureRecognizers>
+
+                    <HorizontalStackLayout Spacing="5">
+
+                        <Label Text="Don't have an account?" TextColor="Black" />
+
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Sign Up" TextDecorations="Underline" FontAttributes="Bold" TextColor="DeepPink">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Register_Button_Clicked" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
-                    </Frame>
+                    </HorizontalStackLayout>
 
                 </StackLayout>
         

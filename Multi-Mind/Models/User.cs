@@ -1,27 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQLite;
 
 namespace Multi_Mind.Models
 {
+    
+    [Table("Users")]
     public class User
     {
+
+        [Column("uid")]
+        [PrimaryKey]
+        public string Uid { get; set; }
+
+        [Column("username")]
         public string Username { get; set; }
+
+        
+        [Column("email")]
+        [Unique]
         public string Email { get; set; }
+
+        [Column("password")]
         public string HashedPassword { get; set; }
 
         public void SetAll(string username, string email, string hashedPassword)
         {
-            this.Username = username;
-            this.Email = email;
-            this.HashedPassword = hashedPassword;
+            Username = username;
+            Email = email;
+            HashedPassword = hashedPassword;
         }
 
         public bool IsAnyPropertyEmpty()
         {
-            string[] property = [this.Username, this.Email, this.HashedPassword];
+            string[] property = [Username, Email, HashedPassword];
 
             if (property.Any(p => string.IsNullOrEmpty(p)))
             {
@@ -29,6 +39,11 @@ namespace Multi_Mind.Models
             }
 
             return false;
+        }
+
+        public static implicit operator User(List<User> v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

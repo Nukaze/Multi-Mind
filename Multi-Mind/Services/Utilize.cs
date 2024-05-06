@@ -108,6 +108,18 @@ namespace Multi_Mind.Services
 
 
 
+
+        public static string GenerateUniqueId(int nLength = 32)
+        {
+            if (nLength < 1 || nLength > 32)
+            {
+                nLength = 32;
+            }
+            return Guid.NewGuid().ToString()[..nLength];
+        }
+
+
+
         public static bool IsUsernameValid(string u)
         {
             string validPattern = @"^[a-zA-Z0-9_]{1,32}$";

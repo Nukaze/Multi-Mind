@@ -10,14 +10,14 @@ namespace Multi_Mind.Services
         public const SQLite.SQLiteOpenFlags flags = (SQLite.SQLiteOpenFlags.ReadWrite | SQLite.SQLiteOpenFlags.Create | SQLite.SQLiteOpenFlags.SharedCache);
 
 
-        private const string DB_PATH = "Database/multimind_db.db3";
+        private const string DB_PATH = "multimind_db.db3";
 
         public static string DatabasePath = Path.Combine(FileSystem.AppDataDirectory, DB_PATH);
         
         public SQLiteAsyncConnection _conn;
 
 
-        async Task InitializeConnection()
+        public async Task InitializeConnection()
         {
             if (_conn is not null)
             {

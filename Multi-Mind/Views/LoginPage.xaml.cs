@@ -66,7 +66,7 @@ public partial class LoginPage : ContentPage
         App.CurrentUser = user;
         isLoggingSuccess = true;
 
-        await AlertDialogCustom("Login Success", "Welcome back, " + App.CurrentUser.Username);
+        await AlertDialogCustom("Login Success", "Going to AI Hub");
         
         if (isLoggingSuccess && App.CurrentUser is not null)
         {

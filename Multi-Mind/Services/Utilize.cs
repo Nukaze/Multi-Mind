@@ -96,7 +96,7 @@ namespace Multi_Mind.Services
             catch (Exception ex)
             {
                 // Handle the error, for example, show an error message
-                await HandleError(ex);
+                //await HandleError(ex);
             }
         }
 

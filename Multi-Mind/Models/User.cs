@@ -41,9 +41,5 @@ namespace Multi_Mind.Models
             return false;
         }
 
-        public static implicit operator User(List<User> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

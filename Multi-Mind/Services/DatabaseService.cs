@@ -49,6 +49,12 @@ namespace Multi_Mind.Services
             return await (_conn.Table<User>().Where(u => u.Uid == id).FirstOrDefaultAsync());
         }
 
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            await InitializeConnection();
+            return await (_conn.Table<User>().Where(u => u.Email == email).FirstOrDefaultAsync());
+        }
+
         public async Task<int> Create(User user)
         {
             await InitializeConnection();

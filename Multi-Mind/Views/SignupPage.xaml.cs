@@ -1,16 +1,19 @@
 using static Multi_Mind.Services.Utilize;
 
 using Multi_Mind.Models;
+using Multi_Mind.Services;
 
 namespace Multi_Mind.Views;
 
 public partial class SignupPage : ContentPage
 {
     private User newUser = new User();
+    private readonly DatabaseService _databaseService = new DatabaseService();
 
     public SignupPage()
 	{
         InitializeComponent();
+        _databaseService.InitializeConnection();
 	}
 
     protected override void OnAppearing()
@@ -30,11 +33,7 @@ public partial class SignupPage : ContentPage
         bool isRegisterValid = await PerformRegistrationValidation();
         if (isRegisterValid)
         {
-            string k = GenerateUniqueId();
-            await AlertDialogCustom("Registering..", $"uid {k} \n{newUser.Username}\n {newUser.Email} \n {newUser.HashedPassword}");
-
-            await AlertDialogCustom("db", App.DB._conn.ToString());
-            await PerformSQLiteRegistration();
+            await LoadingDialog(true, PerformSQLiteRegistration, 1000);
         }
         
         return;
@@ -109,14 +108,11 @@ public partial class SignupPage : ContentPage
 
         // Hash password
         string hashedPassword = HashPassword(PasswordEntry.Text);
-        if (hashedPassword == null)
-        {
-            await AlertDialogCustom("Error", "Password hashing failed!");
-            return false;
-        }
+        // for testing
+        string plainedPassword = PasswordEntry.Text;
 
         
-        newUser.SetAll(UsernameEntry.Text, EmailEntry.Text, hashedPassword);
+        newUser.SetAll(UsernameEntry.Text, EmailEntry.Text, plainedPassword);
 
         if (newUser.IsAnyPropertyEmpty())
         {
@@ -130,8 +126,43 @@ public partial class SignupPage : ContentPage
 
     private async Task PerformSQLiteRegistration()
     {
-        User s = await App.DB.GetUsersAsync();
-        AlertDialogCustom("User", $"{s.Username} {s.Email} {s.HashedPassword}");
+        try
+        {
+            bool isEmailExisted = await _databaseService.IsEmailExisted(newUser.Email);
+            if (isEmailExisted)
+            {
+                await AlertDialogCustom("Error", "Email is already registered!");
+                return;
+            }
+
+            // Register the new user
+            int result = await _databaseService.Create(newUser);
+            if (result > 0)
+            {
+                await AlertDialogCustom("Successfully", "User registered successfully!");
+                // Navigate to a different page after successful registration
+                User storedNewUser = await _databaseService.GetUserByEmailAsync(newUser.Email);
+
+                if (storedNewUser is null) {
+                    await AlertDialogCustom("Error", "User registration failed! Please try again later.");
+                    return;
+                }
+
+                await AlertDialogCustom("Successfully", $"{storedNewUser.Username} has been created\ngoing to login..");
+                App.Current.MainPage = new LoginPage();
+                return;
+
+            }
+            else
+            {
+                await AlertDialogCustom("Error", "User registration failed! Please try again later.");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle any exceptions that occur during registration
+            await AlertDialogCustom("Error", $"An error occurred: {ex.Message}");
+        }
 
     }
 

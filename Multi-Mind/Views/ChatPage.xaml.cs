@@ -15,10 +15,10 @@ public partial class ChatPage : ContentPage
     Color userTextColor = Colors.Black;
     Color userThemeColor = Colors.AliceBlue;
 
+
     public ChatPage()
 	{
 		InitializeComponent();
-		AlertDialogCustom("Welcome to Multi-Mind!","Please enjoy your chatting!");
 	}
 
     

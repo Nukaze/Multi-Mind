@@ -15,7 +15,7 @@ public partial class HubAI : ContentPage
 
     private static async void WelcomeLanding()
     {
-        await AlertDialogCustom("Welcome", $"Agent Name {Global.Agent.Model}\n ENV is production {Global.ENV.IsProduction}");
+        await AlertDialogCustom("Notify", $"Welcome to Multi Mind | {App.CurrentUser.Username} ");
     }
 
     private async void ChatGPT_Clicked(object sender, EventArgs e)

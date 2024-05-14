@@ -15,5 +15,7 @@ namespace Multi_Mind.Services
 
         public static short characterId = 0;
 
+        public static User CURRENT_USER { get; set; }
+
     }
 }

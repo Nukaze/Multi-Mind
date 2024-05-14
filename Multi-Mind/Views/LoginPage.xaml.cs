@@ -1,3 +1,5 @@
+using Multi_Mind.Models;
+using Multi_Mind.Services;
 using static Multi_Mind.Services.Utilize;
 
 namespace Multi_Mind.Views;
@@ -5,14 +7,18 @@ namespace Multi_Mind.Views;
 public partial class LoginPage : ContentPage
 {
 
-    bool isLoggingSucess = false;
+    bool isLoggingSuccess = false;
 
-    string grantedEmail = "admin";
-    string grantedPassword = "1234";
+    string grantedTempEmail = "admin";
+    string grantedTempPassword = "1234";
+
+    private readonly DatabaseService _databaseService = new DatabaseService();
+
 
     public LoginPage()
 	{
 		InitializeComponent();
+        _databaseService.InitializeConnection();
 	}
 
     
@@ -26,7 +32,7 @@ public partial class LoginPage : ContentPage
 
     private async void Login_Button_Clicked(object sender, EventArgs e)
     {
-        await LoadingDialog(true, LoginProcess());
+        await LoadingDialog(true, LoginProcess);
 
     }
 
@@ -40,17 +46,29 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        if (email == grantedEmail && password == grantedPassword)
+        if (email == grantedTempEmail && password == grantedTempPassword)
         {
-            isLoggingSucess = true;
+            isLoggingSuccess = true;
         }
-        else
+
+        User user = await _databaseService.GetUserByEmailAsync(email);
+        if (user is null)
         {
-            await AlertDialogCustom("Login Failed", "Email or password is incorrect!");
+            await AlertDialogCustom("Login Failed", "User not found!");
+            return;
+        }
+        if (user.HashedPassword != password)
+        {
+            await AlertDialogCustom("Login Failed", "Password is invalid!");
             return;
         }
 
-        if (isLoggingSucess && App.Current is not null)
+        App.CurrentUser = user;
+        isLoggingSuccess = true;
+
+        await AlertDialogCustom("Login Success", "Welcome back, " + App.CurrentUser.Username);
+        
+        if (isLoggingSuccess && App.CurrentUser is not null)
         {
             App.Current.MainPage = new AppShell();
         }

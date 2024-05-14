@@ -22,11 +22,11 @@
                 <!-- Form StackLayout -->
                     <StackLayout Padding="20" Spacing="15">
 
-                    <Entry x:Name="EmailEntry" Placeholder="Email" PlaceholderColor="Black" FontAttributes="Bold"
+                    <Entry x:Name="EmailEntry" Placeholder="Enter email here" PlaceholderColor="SlateGray" FontAttributes="Bold"
                            />
 
                     <HorizontalStackLayout HorizontalOptions="FillAndExpand">
-                        <Entry x:Name="PasswordEntry" Placeholder="Password" PlaceholderColor="Black" IsPassword="True"
+                        <Entry x:Name="PasswordEntry" Placeholder="Enter password here" PlaceholderColor="SlateGray" IsPassword="True"
                                WidthRequest="240" FontAttributes="Bold"
                                />
                         

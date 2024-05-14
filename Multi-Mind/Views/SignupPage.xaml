@@ -19,12 +19,12 @@
                 <!-- Form StackLayout -->
                 <StackLayout Padding="20" Spacing="15">
 
-                    <Entry x:Name="UsernameEntry" Placeholder="Username" PlaceholderColor="Black" FontAttributes="Bold" />
+                    <Entry x:Name="UsernameEntry" Placeholder="Enter username" PlaceholderColor="SlateGray" FontAttributes="Bold" />
 
-                    <Entry x:Name="EmailEntry" Placeholder="Email" PlaceholderColor="Black" FontAttributes="Bold" />
+                    <Entry x:Name="EmailEntry" Placeholder="Enter email" PlaceholderColor="SlateGray" FontAttributes="Bold" />
 
                     <HorizontalStackLayout HorizontalOptions="FillAndExpand">
-                        <Entry x:Name="PasswordEntry" Placeholder="Password" PlaceholderColor="Black" IsPassword="True"
+                        <Entry x:Name="PasswordEntry" Placeholder="Enter password" PlaceholderColor="SlateGray" IsPassword="True"
                                WidthRequest="240" FontAttributes="Bold"
                                />
 
@@ -34,7 +34,7 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="FillAndExpand">
-                        <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" PlaceholderColor="Black" IsPassword="True"
+                        <Entry x:Name="ConfirmPasswordEntry" Placeholder="Enter confirm password" PlaceholderColor="SlateGray" IsPassword="True"
                                WidthRequest="240" FontAttributes="Bold"
                                />
 

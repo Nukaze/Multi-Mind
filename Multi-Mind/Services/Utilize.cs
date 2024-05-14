@@ -38,7 +38,7 @@ namespace Multi_Mind.Services
             }
         }
 
-        public static async Task LoadingDialog(bool active, Task? isTaskFinished = null, Color? circularColor = null, string bgColor = "#80333333", double circularSize = 100)
+        public static async Task LoadingDialog(bool active, Func<Task>? taskToPerforming = null, int afterTaskDelayMS = 500, Color? circularColor = null, string bgColor = "#80333333", double circularSize = 100)
         {
             try
             {
@@ -77,13 +77,13 @@ namespace Multi_Mind.Services
                     await Application.Current.MainPage.Navigation.PushModalAsync(loadingPage);
 
                     // Wait for the task to finish before dismissing the loading page
-                    if (isTaskFinished is not null)
+                    if (taskToPerforming is not null)
                     {
-                        await isTaskFinished;
+                        await taskToPerforming();
                     }
 
 
-                    await Task.Delay(1500);
+                    await Task.Delay(afterTaskDelayMS);
                     // Dismiss the loading page
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }

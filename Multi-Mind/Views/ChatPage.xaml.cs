@@ -40,9 +40,9 @@ public partial class ChatPage : ContentPage
             await Shell.Current.GoToAsync("//Characters");
             return;
         }
-        await AlertDialogCustom("Connecting to ", Global.Agent.ApiKey);
+
         await genai.SetProviderConnection(Global.Agent.ApiKey);
-        await AlertDialogCustom("Connection success ", genai.provider);
+
 
         agentLabel.Text = Global.Agent.Model;
         agentLabel.BackgroundColor = Global.Agent.Color;
@@ -57,6 +57,7 @@ public partial class ChatPage : ContentPage
     [Obsolete]
     private async void Send_Button_Clicked(object sender, EventArgs e)
     {
+        // prevent multiple messages from user sent
 		if (isSending)
 		{
             return;
@@ -79,14 +80,14 @@ public partial class ChatPage : ContentPage
         string username = "user";
 		AddMessageToChat(username, message);
 
-        // generate responce from ai
+        // generate responce from ai and switching state
         isReceiving = true;
         string reply = await genai.GetAiReply(message);
         AddMessageToChat(Global.Agent.Model, reply);
         isReceiving = false;
 
 
-
+        // clear message entry
         Device.BeginInvokeOnMainThread(async () =>
         {
             int randomMsDelay = (int)(new Random().NextDouble() * 1000);

@@ -155,7 +155,7 @@ public partial class SignupPage : ContentPage
             }
 
             // Register the new user
-            int result = await _databaseService.Create(newUser);
+            int result = await _databaseService.CreateRecord(newUser);
             if (result > 0)
             {
                 await AlertDialogCustom("Successfully", "User registered successfully!");

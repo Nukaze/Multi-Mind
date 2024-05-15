@@ -22,13 +22,19 @@ public partial class CharactersMenu : ContentPage
     }
 
     //This method is called when the page is first displayed and have override to update the characters buttons
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
         string agentModel = Global.Agent.GetModelLabel(Global.Agent.Id);
         TitleLabel.Text = $"Characters {agentModel}";
         TitleLabel.BackgroundColor = Global.Agent.Color;
         GenerateAndBindingCharactersButtons();
+        
+        if (Global.Agent.Id != 1)
+        {
+            await AlertDialogCustom("Notify", "Please select an AI agent in AI Hub before selecting characters currently allowed for [ ChatGPT ]");
+            await Shell.Current.GoToAsync("//HubAI");
+        }
 
     }
 
@@ -85,13 +91,7 @@ public partial class CharactersMenu : ContentPage
         {
             await Shell.Current.GoToAsync("//Chat");
             return;
-        } else
-        {
-            await AlertDialogCustom("Notify", "Please select an AI agent in AI Hub before selecting characters currently allowed for ChatGPT");
-            await Shell.Current.GoToAsync("//HubAI");
-            return;
-        }
-
+        } 
     }
 
 

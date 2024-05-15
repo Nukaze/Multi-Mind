@@ -1,5 +1,9 @@
-﻿using OpenAI_API;
+﻿using Anthropic.SDK;
+using Anthropic.SDK.Constants;
+
+using OpenAI_API;
 using OpenAI_API.Completions;
+
 
 
 namespace Multi_Mind.Services
@@ -29,7 +33,7 @@ namespace Multi_Mind.Services
 
         }
 
-        public async Task<string> GetAiReply(string message)
+        public async Task<dynamic> GetAiReply(string message)
         {
             string reply = "";
             // get the API message from the provider connected
@@ -39,16 +43,8 @@ namespace Multi_Mind.Services
                     reply = await ChatGPT(message);
                     break;
 
-                case "Gemini":
-                    //reply = await Gemini(message);
-                    break;
-
-                case "Claude":
-                    //reply =  await Claude(message);
-                    break;
-
                 default:
-                    return "provider or api key not found";
+                    return "provider or api key invalid";
                     
             }
             
@@ -59,6 +55,7 @@ namespace Multi_Mind.Services
         {
             try
             {
+                
                 OpenAIAPI openAi = new OpenAIAPI(apiKey);
 
                 CompletionResult result = await openAi.Completions.CreateCompletionAsync(message, max_tokens: 150);
@@ -70,24 +67,15 @@ namespace Multi_Mind.Services
                     string reply = result.Completions[0].Text.Trim();
                     return reply;
                 }
-            } catch (Exception e)
+
+            }
+            catch (Exception e)
             {
-                return $"Error: {e}";
+                return $"Error: \n{e}";
             }
             return "";
 
         }
-
-        public string Gemini()
-        {
-            return "";
-
-        }
         
-
-        public string Claude()
-        {
-            return "";
-        }
     }
 }

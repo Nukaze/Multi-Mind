@@ -109,6 +109,13 @@
                         />
                     </StackLayout>
 
+                    <Button BackgroundColor="PaleVioletRed"
+                            x:Name="howtoButton"
+                            Text="How to get ChatGPT API key (Youtube)"
+                            Clicked="HowToGetAPIKey_Clicked"
+                            VerticalOptions="EndAndExpand"
+                            />
+
                 </controls:StackLayout>
             </Grid>
         </Grid>

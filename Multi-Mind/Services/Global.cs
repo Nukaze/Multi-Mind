@@ -17,5 +17,7 @@ namespace Multi_Mind.Services
 
         public static User CURRENT_USER { get; set; }
 
+        public static string UserChatGPTKey;
+
     }
 }

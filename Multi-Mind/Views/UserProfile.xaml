@@ -45,6 +45,8 @@
                                      WidthRequest="40"
                                      HeightRequest="40"
                                      Clicked="HiddenPasswordBtn_Clicked"
+                                     Source="eyeclose.png"
+                                     IsEnabled="False"
                                      />
                     </HorizontalStackLayout>
 

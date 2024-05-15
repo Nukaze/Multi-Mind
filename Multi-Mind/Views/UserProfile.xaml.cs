@@ -14,6 +14,7 @@ public partial class UserProfile : ContentPage
     private bool isEditing = false;
     private bool isSubmitEdit = false;
     private bool isPasswordHidden = true;
+    private bool isSubmitSuccess = false;
 
     private string originUsername = "";
     private string originEmail = "";
@@ -33,7 +34,6 @@ public partial class UserProfile : ContentPage
 
         await _databaseService.InitializeConnection();
 
-        await AlertDialogCustom("Welcome", "Welcome to your profile page\n" + user.Username);
         await FetchUserInformationAsync(user.Email);
 
     }
@@ -56,11 +56,12 @@ public partial class UserProfile : ContentPage
 
     private async void accountDeleteBtn_Clicked(object sender, EventArgs e)
     {
-        bool isAcceptDeleteAccount = await AlertDialogCustom("Notify", "Are you sure you want to delete your account?", "Yes", "No");
+        bool isConfirmDeleteAccount = await AlertDialogCustom("Notify", "Are you sure you want to delete your account?", "Yes", "No");
 
-        if (isAcceptDeleteAccount)
+        await AlertDialogCustom("Notify", $"confirm delete account {isConfirmDeleteAccount}");
+        if (isConfirmDeleteAccount)
         {
-            await LoadingDialog(true, PerformDeletion, 100);
+            await LoadingDialog(true, PerformDeletion, 400);
         }
     }
 
@@ -71,7 +72,8 @@ public partial class UserProfile : ContentPage
         App.CurrentUser = null;
         Global.CURRENT_USER = null;
         await AlertDialogCustom("Notify", "Account has been deleted successfully");
-        await Shell.Current.GoToAsync("//Login");
+
+        App.Current.MainPage = new SplashScreen();
     }
 
 
@@ -108,7 +110,6 @@ public partial class UserProfile : ContentPage
         {
             if (accountEditBtn.Text == "Save the changes")
             {
-                isSubmitEdit = true;
                 bool isAcceptUserChange = await AlertDialogCustom("Notify", 
                     $"Do you want to update your profile?",
                     "Yes",
@@ -120,13 +121,16 @@ public partial class UserProfile : ContentPage
                     await LoadingDialog(true, PerformSubmitEditProfile, 400);
                 }
 
+                ResetUiState();
 
+                return;
                 // after submit
                 accountCancelEdit.IsVisible = false;
 
                 accountEditBtn.Text = "Edit Profile";
                 accountEditBtn.BackgroundColor = Colors.DarkGoldenrod;
                 accountEditBtn.TextColor = Colors.White;
+             
             }
 
 
@@ -184,8 +188,9 @@ public partial class UserProfile : ContentPage
             Email = user.Email,
             HashedPassword = _password
         };
-        // Save the changes
-        //await _databaseService.UpdateRecord(updatedUser);
+
+        // Save the user changes
+        await _databaseService.UpdateRecord(updatedUser);
         await AlertDialogCustom("Notify", "Profile has been updated successfully");
     }
 
@@ -204,7 +209,7 @@ public partial class UserProfile : ContentPage
     {
         App.CurrentUser = null;
         Global.CURRENT_USER = null;
-        await Shell.Current.GoToAsync("//Login");
+        App.Current.MainPage = new LoginPage();
     }
 
     private void HiddenPasswordBtn_Clicked(object sender, EventArgs e)
@@ -241,7 +246,7 @@ public partial class UserProfile : ContentPage
         PasswordEntry.TextColor = infoColor;
         PasswordEntry.IsReadOnly = true;
 
-        HiddenPasswordBtn.IsVisible = false;
+        HiddenPasswordBtn.IsVisible = true;
         HiddenPasswordBtn.IsEnabled = false;
 
         accountCancelEdit.IsVisible = false;

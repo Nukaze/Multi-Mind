@@ -10,6 +10,8 @@ public partial class SignupPage : ContentPage
     private User newUser = new User();
     private readonly DatabaseService _databaseService = new DatabaseService();
 
+    private bool isRegistering = false;
+
     public SignupPage()
 	{
         InitializeComponent();
@@ -35,12 +37,19 @@ public partial class SignupPage : ContentPage
 
     private async void SignUpButton_Clicked(object sender, EventArgs e)
     {
-        bool isRegisterValid = await PerformRegistrationValidation();
-        if (isRegisterValid)
+        // Prevent multiple registration by checking the flag state
+        if (isRegistering)
         {
-            await LoadingDialog(true, PerformSQLiteRegistration, 1000);
+            return;
         }
-        
+
+        // Setting a flag state
+        isRegistering = true;
+        // Perform registration
+        await LoadingDialog(true, PerformSQLiteRegistration, 1000);
+        // Reset the flag
+        isRegistering = false;
+
         return;
     }
 
@@ -131,6 +140,11 @@ public partial class SignupPage : ContentPage
 
     private async Task PerformSQLiteRegistration()
     {
+        bool isRegisterFormValid = await PerformRegistrationValidation();
+        if (!isRegisterFormValid)
+        {
+            return;
+        }
         try
         {
             bool isEmailExisted = await _databaseService.IsEmailExisted(newUser.Email);

@@ -46,11 +46,13 @@ public partial class LoginPage : ContentPage
             return;
         }
 
+        // login with temporary email and password for testing
         if (email == grantedTempEmail && password == grantedTempPassword)
         {
             isLoggingSuccess = true;
         }
 
+        // query user from database
         User user = await _databaseService.GetUserByEmailAsync(email);
         if (user is null)
         {
@@ -63,8 +65,10 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        App.CurrentUser = user;
+        // login successfully
         isLoggingSuccess = true;
+        App.CurrentUser = user;
+        Global.CURRENT_USER = user;
 
         await AlertDialogCustom("Login Success", "Going to AI Hub");
         

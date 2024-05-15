@@ -55,7 +55,7 @@ namespace Multi_Mind.Services
             return await (_conn.Table<User>().Where(u => u.Email == email).FirstOrDefaultAsync());
         }
 
-        public async Task<int> Create(User user)
+        public async Task<int> CreateRecord(User user)
         {
             await InitializeConnection();
             string uid = GenerateUniqueId();
@@ -70,13 +70,13 @@ namespace Multi_Mind.Services
             return await _conn.InsertAsync(user);
         }
 
-        public async Task<int> Update(User user)
+        public async Task<int> UpdateRecord(User user)
         {
             await InitializeConnection();
             return await _conn.UpdateAsync(user);
         }
 
-        public async Task<int> Delete(User user)
+        public async Task<int> DeleteRecord(User user)
         {
             await InitializeConnection();
             return await _conn.DeleteAsync(user);

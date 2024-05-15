@@ -13,8 +13,13 @@ public partial class SignupPage : ContentPage
     public SignupPage()
 	{
         InitializeComponent();
-        _databaseService.InitializeConnection();
+        initDatabaseService();
 	}
+
+    private async void initDatabaseService()
+    {
+        await _databaseService.InitializeConnection();
+    }
 
     protected override void OnAppearing()
     {

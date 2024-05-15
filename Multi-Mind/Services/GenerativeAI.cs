@@ -10,8 +10,8 @@ namespace Multi_Mind.Services
 {
     class GenerativeAI
     {
-        public string apiKey;
-        public string provider;
+        public string apiKey = "";
+        public string provider = "";
 
 
         public GenerativeAI(string apiKey)
@@ -20,7 +20,7 @@ namespace Multi_Mind.Services
         }
 
 
-        public async Task SetProviderConnection(string _apiKey)
+        public void SetProviderConnection(string _apiKey)
         {
             // connet chatgpt or gemini or claude in this mehtod
             provider = _apiKey switch

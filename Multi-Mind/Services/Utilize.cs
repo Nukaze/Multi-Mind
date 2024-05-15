@@ -93,7 +93,7 @@ namespace Multi_Mind.Services
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 // Handle the error, for example, show an error message
                 //await HandleError(ex);

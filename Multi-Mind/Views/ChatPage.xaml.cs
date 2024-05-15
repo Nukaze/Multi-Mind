@@ -41,7 +41,7 @@ public partial class ChatPage : ContentPage
             return;
         }
 
-        await genai.SetProviderConnection(Global.Agent.ApiKey);
+        genai.SetProviderConnection(Global.Agent.ApiKey);
 
 
         agentLabel.Text = Global.Agent.Model;

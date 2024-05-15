@@ -15,9 +15,11 @@ namespace Multi_Mind.Services
 
         public static short characterId = -1;
 
-        public static User CURRENT_USER { get; set; }
 
-        public static string UserChatGPTKey;
+
+        public static User CURRENT_USER = new User();
+
+        public static string UserChatGPTKey = "";
 
     }
 }

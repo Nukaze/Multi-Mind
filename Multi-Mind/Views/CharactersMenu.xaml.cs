@@ -131,7 +131,7 @@ public partial class CharactersMenu : ContentPage
             await SetCharacterId(characterId);
         }
 
-        await AlertDialogCustom("Notify", $"Selected {characterId}\n\"global {Global.characterId}\"");
+
         if (Global.characterId < 0)
         {
             return;

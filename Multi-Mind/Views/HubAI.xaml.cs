@@ -70,10 +70,15 @@ public partial class HubAI : ContentPage
     {
         string _rawHowToGetAPIKeyUrl = "https://www.youtube.com/watch?v=OB99E7Y1cMA";
         
-        string videoId = "OB99E7Y1cMA";
+        
+        await LoadingDialog(true, OpenHowToGetAPIKeyViaYoutube);
+    }
 
+    private async Task<dynamic> OpenHowToGetAPIKeyViaYoutube()
+    {
+        string videoId = "OB99E7Y1cMA";
         Uri _uri = new Uri($"vnd.youtube://watch/{videoId}");
-        await Browser.OpenAsync(_uri);
+        return await Browser.OpenAsync(_uri);
     }
 
     private async void GoToCharactersMenu()
@@ -94,16 +99,17 @@ public partial class HubAI : ContentPage
         bool apiKeyExists = !string.IsNullOrEmpty(Global.UserChatGPTKey);
         string message = apiKeyExists ? "Do you want to replace the user API key?" : "Do you want to add the user API key?";
 
-        await AlertDialogCustom("Notify",
-            message,
-            "Confirm",
-            "Cancel",
-            onAccept: async () =>
-            {
-                Global.UserChatGPTKey = userApiKey;
-                string successMessage = apiKeyExists ? "User API key has been replaced" : "User API key has been set";
-                await AlertDialogCustom("Notify", successMessage);
-            }
+        bool isAccpeted = await AlertDialogCustom("Notify",
+                                            message,
+                                            "Confirm",
+                                            "Cancel",
+                                            onAccept: async () =>
+                                            {
+                                                Global.UserChatGPTKey = userApiKey;
+                                                string successMessage = apiKeyExists ? "User API key has been replaced" : "User API key has been set";
+                                                await AlertDialogCustom("Notify", successMessage);
+                                                await AlertDialogCustom("Notify", $"User API key: {Global.UserChatGPTKey}");
+                                            }
         );
     }
 

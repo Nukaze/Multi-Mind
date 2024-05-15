@@ -9,6 +9,7 @@ public partial class CharactersMenu : ContentPage
 {
 
     private Characters characters = new Characters();
+    private short _characterId = -1;
 
     public CharactersMenu()
     {
@@ -75,14 +76,22 @@ public partial class CharactersMenu : ContentPage
             await AlertDialogCustom("Notify", "Please select ai agent in AI Hub before select characters");
             return;
         }
+
         string character = characters.charactersList[characterId];
-        await AlertDialogCustom(
+        _characterId = characterId;
+        bool isAccept = await AlertDialogCustom(
                         "Notify",
                         $"\"{character}\" Selected",
                         "Select and Start Chat",
-                        onAccept: () => Global.characterId = characterId
+                        "Cancel"
                         );
-        await AlertDialogCustom("Notify", $"\"global {Global.characterId}\"\nSelected {characterId}");
+
+        if (isAccept)
+        {
+            await SetCharacterId(characterId);
+        }
+
+        await AlertDialogCustom("Notify", $"Selected {characterId}\n\"global {Global.characterId}\"");
         if (Global.characterId < 0)
         {
             return;
@@ -92,6 +101,17 @@ public partial class CharactersMenu : ContentPage
             await Shell.Current.GoToAsync("//Chat");
             return;
         } 
+    }
+
+    private async Task SetCharacterId(short _characterId)
+    {
+        if (_characterId < 0)
+        {
+            await AlertDialogCustom("Notify", "Please select a character first!");
+            return;
+        }
+        Global.characterId = _characterId;
+        await AlertDialogCustom("Notify", $"character id has been set!");
     }
 
 

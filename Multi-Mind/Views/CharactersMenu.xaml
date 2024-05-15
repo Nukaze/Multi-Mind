@@ -5,18 +5,19 @@
              Title="Characters Menu">
 
 
-    <VerticalStackLayout VerticalOptions="CenterAndExpand" BackgroundColor="AliceBlue" HeightRequest="800">
-        <Label Text="Characters" FontSize="Title" />
+    <VerticalStackLayout VerticalOptions="StartAndExpand" BackgroundColor="AliceBlue" HeightRequest="700">
         <Label 
             x:Name="TitleLabel"
             Text="" FontSize="48"
+            Padding="60, 0, 60, 0"
             TextColor="Black"
             FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            
            />
         <ScrollView 
-            HeightRequest="670"
-            Margin="20,0,20,0" Padding="20, 20, 20, 20"
-            BackgroundColor="Grey"
+            HeightRequest="600"
+            Margin="20,0,20, 0" Padding="20, 20, 20, 20"
             >
             <VerticalStackLayout x:Name="buttonVertStackLayout" Spacing="10" >
 

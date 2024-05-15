@@ -6,8 +6,14 @@ namespace Multi_Mind.Views;
 
 public partial class UserProfile : ContentPage
 {
-    private User user = Global.CURRENT_USER;
+    private User user = App.CurrentUser;
     private DatabaseService _databaseService = new DatabaseService();
+
+    private bool isEditing = false;
+
+    private string tempUsername = "";
+    private string tempPassword = "";
+
 
 
     public UserProfile()
@@ -18,7 +24,23 @@ public partial class UserProfile : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await AlertDialogCustom("Welcome", "Welcome to your profile page\n" + user);
+        await AlertDialogCustom("Welcome", "Welcome to your profile page\n" + user.Username);
+        await FetchUserInformationAsync();
+
+    }
+
+    private async Task FetchUserInformationAsync()
+    {
+        if (user is null)
+        {
+            await AlertDialogCustom("Error", "User is not loaded");
+            return;
+        }
+        UsernameEntry.Text = user.Username;
+        //UsernameEntry.IsEnabled = false;
+        UsernameEntry.TextColor = Colors.DarkSlateGray;
+        EmailEntry.Text = user.Email;
+        PasswordEntry.Text = user.HashedPassword;
     }
 
 

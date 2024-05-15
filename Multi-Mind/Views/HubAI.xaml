@@ -114,22 +114,31 @@
                     
                     
                     <StackLayout VerticalOptions="EndAndExpand">
-                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                            
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="2">
+                        
                             <Frame CornerRadius="10" Padding="5,0,5,0" >
                                 <Entry x:Name="userApiKeyEntry" HeightRequest="50" BackgroundColor="White"
                                    HorizontalOptions="Start"
                                    IsPassword="True"
                                    Placeholder="Enter api key here"
-                                   WidthRequest="240"
+                                   WidthRequest="200"
                                     />
                             </Frame>
 
+                            <Frame CornerRadius="10" Padding="5,0,5,0" 
+                                   WidthRequest="50"
+                                   HeightRequest="50"
+                                   BackgroundColor="Grey"
+                                   >
+
                                 <ImageButton x:Name="clearApiKeyButton"
-                                         Source="trash_icon"
-                                         HeightRequest="50"
-                                         Clicked="clearApiKeyButton_Clicked"
-                                />
+                                             Source="trash_icon"
+                                             HeightRequest="20"
+                                             WidthRequest="50"
+                                             Clicked="clearApiKeyButton_Clicked"
+                                             BorderWidth="1"
+                                            />
+                            </Frame>
 
                             <Button x:Name="userApiKeySubmit"
                                 Text="Save"

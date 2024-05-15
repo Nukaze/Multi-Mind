@@ -106,4 +106,15 @@ public partial class HubAI : ContentPage
             }
         );
     }
+
+    private void clearApiKeyButton_Clicked(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(userApiKeyEntry.Text))
+        {
+            return;
+        }
+
+        userApiKeyEntry.Text = "";
+
+    }
 }

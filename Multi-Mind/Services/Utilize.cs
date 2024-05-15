@@ -11,7 +11,7 @@ namespace Multi_Mind.Services
 {
     public class Utilize
     {
-        public static async Task AlertDialogCustom(
+        public static async Task<bool> AlertDialogCustom(
             string title, string message,
             string? acceptText = null, string? cancelText = null,
             Delegate? onAccept = null
@@ -19,7 +19,7 @@ namespace Multi_Mind.Services
         {
             if (Application.Current is null || Application.Current.MainPage is null)
             {
-                return;
+                return false;
             }
 
             acceptText ??= "OK";
@@ -30,11 +30,14 @@ namespace Multi_Mind.Services
                 if (isAccept && onAccept is not null)
                 {
                     onAccept.DynamicInvoke();
+                    return true;
                 }
+                return true;
             }
             else
             {
                 await Application.Current.MainPage.DisplayAlert(title, message, acceptText);
+                return false;
             }
         }
 

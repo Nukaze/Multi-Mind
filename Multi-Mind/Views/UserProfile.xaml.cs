@@ -56,9 +56,8 @@ public partial class UserProfile : ContentPage
 
     private async void accountDeleteBtn_Clicked(object sender, EventArgs e)
     {
-        bool isConfirmDeleteAccount = await AlertDialogCustom("Notify", "Are you sure you want to delete your account?", "Yes", "No");
+        bool isConfirmDeleteAccount = await AlertDialogCustom("Notify", "Are you sure you want to DELETE your account?", "Confirm DELETE", "Not DELETE");
 
-        await AlertDialogCustom("Notify", $"confirm delete account {isConfirmDeleteAccount}");
         if (isConfirmDeleteAccount)
         {
             await LoadingDialog(true, PerformDeletion, 400);
@@ -124,13 +123,6 @@ public partial class UserProfile : ContentPage
                 ResetUiState();
 
                 return;
-                // after submit
-                accountCancelEdit.IsVisible = false;
-
-                accountEditBtn.Text = "Edit Profile";
-                accountEditBtn.BackgroundColor = Colors.DarkGoldenrod;
-                accountEditBtn.TextColor = Colors.White;
-             
             }
 
 

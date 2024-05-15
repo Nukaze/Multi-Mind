@@ -13,7 +13,7 @@ namespace Multi_Mind.Services
 
         public static DeviceDisplayInfo DeviceDisplayInfo { get; set; } = new DeviceDisplayInfo();
 
-        public static short characterId = 0;
+        public static short characterId = -1;
 
         public static User CURRENT_USER { get; set; }
 

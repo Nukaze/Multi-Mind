@@ -30,9 +30,9 @@ namespace Multi_Mind.Services
                 if (isAccept && onAccept is not null)
                 {
                     onAccept.DynamicInvoke();
-                    return true;
+                    return isAccept;
                 }
-                return true;
+                return isAccept;
             }
             else
             {

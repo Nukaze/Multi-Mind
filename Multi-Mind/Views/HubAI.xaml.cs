@@ -66,6 +66,16 @@ public partial class HubAI : ContentPage
         );
     }
 
+    private async void HowToGetAPIKey_Clicked(object sender, EventArgs e)
+    {
+        string _rawHowToGetAPIKeyUrl = "https://www.youtube.com/watch?v=OB99E7Y1cMA";
+        
+        string videoId = "OB99E7Y1cMA";
+
+        Uri _uri = new Uri($"vnd.youtube://watch/{videoId}");
+        await Browser.OpenAsync(_uri);
+    }
+
     private async void GoToCharactersMenu()
     {
         await Shell.Current.GoToAsync("//Characters");

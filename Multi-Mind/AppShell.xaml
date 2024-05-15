@@ -54,6 +54,7 @@
             Title="Profile"
             Route="Profile"
             Icon="profile.png"
+            ContentTemplate="{DataTemplate local:UserProfile}"
             />
         <!-- Using Shell.Current.GoToAsync("\\Profile"); -->
 

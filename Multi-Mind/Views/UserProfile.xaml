@@ -12,8 +12,8 @@
 
         
             <Frame BackgroundColor="#80EEEEEE" CornerRadius="40"
-                   WidthRequest="300" HeightRequest="600" 
-                   Padding="20,20,20,20">
+                   WidthRequest="320" HeightRequest="590" 
+                   Padding="30,20,30,20">
                 <StackLayout VerticalOptions="CenterAndExpand">
                     
                     <!-- User Icon Image Circular Frame -->

@@ -29,14 +29,54 @@ public partial class CharactersMenu : ContentPage
         string agentModel = Global.Agent.GetModelLabel(Global.Agent.Id);
         TitleLabel.Text = $"Characters {agentModel}";
         TitleLabel.BackgroundColor = Global.Agent.Color;
+        // generate and bind the characters buttons
         GenerateAndBindingCharactersButtons();
-        
-        if (Global.Agent.Id != 1)
-        {
-            await AlertDialogCustom("Notify", "Please select an AI agent in AI Hub before selecting characters currently allowed for [ ChatGPT ]");
-            await Shell.Current.GoToAsync("//HubAI");
-        }
 
+
+        // Check if the user has selected an AI agent before selecting characters
+        AgentValidation();
+        
+        
+
+    }
+
+    private async void AgentValidation()
+    {
+        // Check if the user has selected an AI agent before selecting characters
+        Agent.Models currentAgent = (Agent.Models)(Global.Agent.Id);
+        switch (currentAgent)
+        {
+            case Agent.Models.Null:
+                await AlertDialogCustom("Notify", "Please select an AI agent in AI Hub before selecting characters currently allowed for [ ChatGPT ]");
+                await Shell.Current.GoToAsync("//HubAI");
+                break;
+
+            case Agent.Models.Gemini:
+                bool isAcceptGemini = await AlertDialogCustom("Notify", "Going to Chat Gemini", "Go to Gemini", "Back to AI Hub");
+                if (isAcceptGemini)
+                {
+                    Uri url = new Uri("https://gemini.google.com/app");
+                    await Browser.Default.OpenAsync(url);
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync("//HubAI");
+                }
+                break;
+
+            case Agent.Models.Claude:
+                bool isAcceptClaude = await AlertDialogCustom("Notify", "Going to Chat Claude", "Go to Gemini", "Back to AI Hub");
+                if (isAcceptClaude)
+                {
+                    Uri url = new Uri("https://claude.google.com/app");
+                    await Browser.Default.OpenAsync(url);
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync("//HubAI");
+                }
+                break;
+        }
     }
 
 

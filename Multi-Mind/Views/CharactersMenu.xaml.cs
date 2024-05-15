@@ -19,8 +19,6 @@ public partial class CharactersMenu : ContentPage
         characters.GetDefaultCharacters();
         GenerateAndBindingCharactersButtons();
 
-
-
     }
 
     //This method is called when the page is first displayed and have override to update the characters buttons
@@ -28,21 +26,16 @@ public partial class CharactersMenu : ContentPage
     {
         base.OnAppearing();
         string agentModel = Global.Agent.GetModelLabel(Global.Agent.Id);
-        TitleLabel.Text = $"Agent {agentModel}";
+        TitleLabel.Text = $"Characters {agentModel}";
+        TitleLabel.BackgroundColor = Global.Agent.Color;
         GenerateAndBindingCharactersButtons();
 
     }
 
 
-    private async void CheckScreenDimensions()
+    private void CheckScreenDimensions()
     {
         var displayInfo = Global.DeviceDisplayInfo;
-        await AlertDialogCustom(
-            $"Agent {Global.Agent.Model}",
-            $"KEY {Global.Agent.ApiKey}\nDensity: {displayInfo.Density}\nWidthDP: {displayInfo.WidthDp}\nHeightDP: {displayInfo.HeightDp}\nOrientation: {displayInfo.Orientation}",
-            "OK"
-            );
-
     }
 
     private void GenerateAndBindingCharactersButtons()
@@ -71,16 +64,36 @@ public partial class CharactersMenu : ContentPage
 
     private async Task HandleCharacterButtonSelection(short characterId)
     {
+        if (Global.Agent.Id == 0)
+        {
+            await AlertDialogCustom("Notify", "Please select ai agent in AI Hub before select characters");
+            return;
+        }
         string character = characters.charactersList[characterId];
         await AlertDialogCustom(
-                       $"\"{character}\" Selected",
-                        characters.dialogsList[characterId],
-                        "OK"
+                        "Notify",
+                        $"\"{character}\" Selected",
+                        "Select and Start Chat",
+                        onAccept: () => Global.characterId = characterId
                         );
+        await AlertDialogCustom("Notify", $"\"global {Global.characterId}\"\nSelected {characterId}");
+        if (Global.characterId < 0)
+        {
+            return;
+        }
+        if (Global.Agent.Id == 1)
+        {
+            await Shell.Current.GoToAsync("//Chat");
+            return;
+        } else
+        {
+            await AlertDialogCustom("Notify", "Please select an AI agent in AI Hub before selecting characters currently allowed for ChatGPT");
+            await Shell.Current.GoToAsync("//HubAI");
+            return;
+        }
 
-
-        await Shell.Current.GoToAsync("//HubAI");
-        //await Shell.Current.GoToAsync($"//Chat?character={character}");
     }
+
+
 
 }

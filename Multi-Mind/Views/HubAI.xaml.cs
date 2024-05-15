@@ -81,8 +81,29 @@ public partial class HubAI : ContentPage
         await Shell.Current.GoToAsync("//Characters");
     }
 
-    private void userApiKeySubmit_Clicked(object sender, EventArgs e)
+    private async void userApiKeySubmit_Clicked(object sender, EventArgs e)
     {
+        string userApiKey = userApiKeyEntry.Text;
 
+        if (string.IsNullOrEmpty(userApiKey))
+        { 
+            await AlertDialogCustom("Notify", "Please enter the user API key");
+            return;
+        }
+
+        bool apiKeyExists = !string.IsNullOrEmpty(Global.UserChatGPTKey);
+        string message = apiKeyExists ? "Do you want to replace the user API key?" : "Do you want to add the user API key?";
+
+        await AlertDialogCustom("Notify",
+            message,
+            "Confirm",
+            "Cancel",
+            onAccept: async () =>
+            {
+                Global.UserChatGPTKey = userApiKey;
+                string successMessage = apiKeyExists ? "User API key has been replaced" : "User API key has been set";
+                await AlertDialogCustom("Notify", successMessage);
+            }
+        );
     }
 }

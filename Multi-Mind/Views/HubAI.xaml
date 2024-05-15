@@ -46,7 +46,7 @@
             </Grid>
 
             <Grid Grid.Row="1" Background="#333333" Margin="0">
-                <controls:StackLayout Margin="20" Spacing="30">
+                <controls:StackLayout Margin="20" Spacing="00">
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                         <ImageButton 
@@ -111,11 +111,9 @@
 
 
                     <!-- API key entry -->
-                    
-                    
-                    <StackLayout VerticalOptions="EndAndExpand">
+                    <VerticalStackLayout VerticalOptions="EndAndExpand" Spacing="15">
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="2">
-                        
+
                             <Frame CornerRadius="10" Padding="5,0,5,0" >
                                 <Entry x:Name="userApiKeyEntry" HeightRequest="50" BackgroundColor="White"
                                    HorizontalOptions="Start"
@@ -137,7 +135,7 @@
                                              WidthRequest="50"
                                              Clicked="clearApiKeyButton_Clicked"
                                              BorderWidth="1"
-                                            />
+                                    />
                             </Frame>
 
                             <Button x:Name="userApiKeySubmit"
@@ -148,25 +146,25 @@
                                 WidthRequest="80"
                                 HeightRequest="50"
                             />
-                            
+
                         </HorizontalStackLayout>
-                    </StackLayout>
 
-
-                    <Button BackgroundColor="PaleVioletRed"
-                            x:Name="howtoButton"
-                            Text="How to get ChatGPT API key | Youtube"
-                            FontAttributes="Bold"
-                            WidthRequest="300"
-                            HeightRequest="50"
-                            FontSize="14"
-                            Clicked="HowToGetAPIKey_Clicked"
-                            VerticalOptions="End"
-                            />
-
+                        <Button BackgroundColor="PaleVioletRed"
+                                x:Name="howtoButton"
+                                Text="How to get ChatGPT API key | Youtube"
+                                FontAttributes="Bold"
+                                WidthRequest="300"
+                                HeightRequest="50"
+                                FontSize="14"
+                                Clicked="HowToGetAPIKey_Clicked"
+                                VerticalOptions="End"
+                                />
+                    </VerticalStackLayout>
                 </controls:StackLayout>
             </Grid>
         </Grid>
-    </ContentPage.Content>
 
+    </ContentPage.Content>
+    
+    
 </ContentPage>

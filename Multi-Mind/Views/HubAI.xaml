@@ -109,11 +109,35 @@
                         />
                     </StackLayout>
 
+
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Background="red" VerticalOptions="EndAndExpand">
+                        <Entry x:Name="userApiKeyEntry" HeightRequest="50" BackgroundColor="SeaGreen"
+                           HorizontalOptions="Start"
+                           Placeholder="Enter api key here"
+                           WidthRequest="100"
+                           />
+                        
+                    <Button x:Name="userApiKeySubmit"
+                            Text="Submit"
+                            Clicked="userApiKeySubmit_Clicked"
+                            HorizontalOptions="Center"
+                            FontAttributes="Bold"
+                            WidthRequest="80"
+                            HeightRequest="50"
+                            
+                            />
+                    </HorizontalStackLayout>
+
+
                     <Button BackgroundColor="PaleVioletRed"
                             x:Name="howtoButton"
-                            Text="How to get ChatGPT API key (Youtube)"
+                            Text="How to get ChatGPT API key | Youtube"
+                            FontAttributes="Bold"
+                            WidthRequest="300"
+                            HeightRequest="50"
+                            FontSize="14"
                             Clicked="HowToGetAPIKey_Clicked"
-                            VerticalOptions="EndAndExpand"
+                            VerticalOptions="End"
                             />
 
                 </controls:StackLayout>

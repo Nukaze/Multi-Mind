@@ -80,4 +80,9 @@ public partial class HubAI : ContentPage
     {
         await Shell.Current.GoToAsync("//Characters");
     }
+
+    private void userApiKeySubmit_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

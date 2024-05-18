@@ -52,11 +52,11 @@ public partial class CharactersMenu : ContentPage
                 break;
 
             case Agent.Models.Gemini:
-                bool isAcceptGemini = await AlertDialogCustom("Notify", "Going to Chat Gemini", "Go to Gemini", "Back to AI Hub");
+                bool isAcceptGemini = await AlertDialogCustom("Notify", "Going to Chat Gemini on Browser", "Go to Gemini", "Back to AI Hub");
                 if (isAcceptGemini)
                 {
                     Uri url = new Uri("https://gemini.google.com/app");
-                    await Browser.Default.OpenAsync(url);
+                    await OpenBrowserSafely(url);
                     break;
                 }
                 else
@@ -66,11 +66,11 @@ public partial class CharactersMenu : ContentPage
                 }
 
             case Agent.Models.Claude:
-                bool isAcceptClaude = await AlertDialogCustom("Notify", "Going to Chat Claude", "Go to Claude", "Back to AI Hub");
+                bool isAcceptClaude = await AlertDialogCustom("Notify", "Going to Chat Claude on Browser", "Go to Claude", "Back to AI Hub");
                 if (isAcceptClaude)
                 {
-                    Uri url = new Uri("https://claude.google.com/app");
-                    await Browser.Default.OpenAsync(url);
+                    Uri url = new Uri("https://claude.ai");
+                    await OpenBrowserSafely(url);
                     break;
                 }
                 else
@@ -78,6 +78,26 @@ public partial class CharactersMenu : ContentPage
                     await Shell.Current.GoToAsync("//HubAI");
                     break;
                 }
+        }
+    }
+
+    private async Task OpenBrowserSafely(Uri url)
+    {
+        try
+        {
+            if (url != null)
+            {
+                // ideal device config yt, browser
+                await Browser.Default.OpenAsync(url);
+
+                // for compatible with all devices
+                //await Browser.OpenAsync(url);
+
+                await Shell.Current.GoToAsync("//HubAI");
+            }
+        } catch (Exception e)
+        {
+            await AlertDialogCustom("Notify", "Error opening the browser");
         }
     }
 

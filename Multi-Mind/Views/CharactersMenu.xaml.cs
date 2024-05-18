@@ -57,25 +57,27 @@ public partial class CharactersMenu : ContentPage
                 {
                     Uri url = new Uri("https://gemini.google.com/app");
                     await Browser.Default.OpenAsync(url);
+                    break;
                 }
                 else
                 {
                     await Shell.Current.GoToAsync("//HubAI");
+                    break;
                 }
-                break;
 
             case Agent.Models.Claude:
-                bool isAcceptClaude = await AlertDialogCustom("Notify", "Going to Chat Claude", "Go to Gemini", "Back to AI Hub");
+                bool isAcceptClaude = await AlertDialogCustom("Notify", "Going to Chat Claude", "Go to Claude", "Back to AI Hub");
                 if (isAcceptClaude)
                 {
                     Uri url = new Uri("https://claude.google.com/app");
                     await Browser.Default.OpenAsync(url);
+                    break;
                 }
                 else
                 {
                     await Shell.Current.GoToAsync("//HubAI");
+                    break;
                 }
-                break;
         }
     }
 
